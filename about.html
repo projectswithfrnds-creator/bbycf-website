@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Body Bend Yoga Foundation</title>
+  <meta name="description" content="Learn about Body Bend Yoga Foundation's mission to fund wellness educators and expand healing access across Southern California and nationwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      padding: calc(var(--nav-height) + 4rem) 3rem 5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(61,107,87,0.15) 0%, transparent 60%);
+    }
+    .about-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .about-hero h1 { font-style: italic; max-width: 700px; }
+    .about-hero h1 em { font-style: normal; color: var(--gold); }
+
+    .mission-vision {
+      padding: 8rem 3rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .mission-vision-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    .mv-block h3 { font-size: 1.8rem; margin-bottom: 1.2rem; }
+    .mv-block p { max-width: none; }
+
+    .values {
+      padding: 8rem 3rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .values-inner { max-width: var(--max-width); margin: 0 auto; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+    .value-card {
+      background: var(--surface);
+      padding: 2.5rem 2rem;
+      transition: background var(--transition);
+    }
+    .value-card:hover { background: var(--surface-2); }
+    .value-number {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: rgba(201,168,76,0.2);
+      line-height: 1;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .value-card h3 { font-size: 1.1rem; margin-bottom: 0.8rem; }
+    .value-card p { font-size: 0.9rem; max-width: none; }
+
+    .story {
+      padding: 8rem 3rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .story-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .story-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .story-text h2 { margin-bottom: 1.5rem; }
+    .story-text p { margin-bottom: 1.2rem; }
+
+    .vision-band {
+      padding: 7rem 3rem;
+      background: var(--green);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .vision-band-inner { max-width: 720px; margin: 0 auto; }
+    .vision-band h2 { margin-bottom: 1.2rem; }
+    .vision-band p { margin: 0 auto 2.5rem; font-size: 1.05rem; }
+
+    @media (max-width: 1024px) {
+      .mission-vision-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .story-inner { grid-template-columns: 1fr; }
+      .story-image { display: none; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .about-hero, .mission-vision, .values, .story, .vision-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-main">Body Bend Yoga</span>
+        <span class="nav-logo-sub">Foundation</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <span class="section-label fade-up">Our Foundation</span>
+      <h1 class="fade-up">Rooted in <em>Community.</em><br />Built for the Healers.</h1>
+      <div class="gold-line fade-up"></div>
+      <p class="fade-up">Body Bend Yoga Foundation was born from a simple truth: the people who teach healing often cannot afford to be healed themselves. We are here to change that.</p>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION -->
+  <section class="mission-vision">
+    <div class="mission-vision-inner">
+      <div class="mv-block">
+        <span class="section-label fade-up">Mission</span>
+        <h3 class="fade-up">What We Do</h3>
+        <div class="gold-line fade-up"></div>
+        <p class="fade-up">Body Bend Yoga Foundation is committed to making holistic wellness accessible for all. We provide free and low-cost yoga services to underserved communities, offer inclusive corporate wellness programs, and fund scholarships for wellness educators so they can continue deepening their knowledge and expanding their practice.</p>
+        <p class="fade-up">We address the growing need for healing and self-regulation by equipping individuals with empowering tools through yoga, mindfulness, and community care.</p>
+      </div>
+      <div class="mv-block">
+        <span class="section-label fade-up">Vision</span>
+        <h3 class="fade-up">Where We Are Going</h3>
+        <div class="gold-line fade-up"></div>
+        <p class="fade-up">A world where every wellness educator has the financial stability to dedicate their life to their practice, and every community has access to the healing that follows. We envision a nationwide network of empowered teachers — awarding 100 to 400 scholarships annually — each one multiplying our reach into communities that need it most.</p>
+        <p class="fade-up">This is not just a foundation. It is a movement toward spiritual, physical, and economic wellness for all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="values-inner">
+      <div>
+        <span class="section-label fade-up">What We Stand For</span>
+        <h2 class="fade-up">Our Core Values</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card fade-up">
+          <div class="value-number">01</div>
+          <h3>Access</h3>
+          <p>Healing is not a luxury. We believe every person deserves access to wellness practices regardless of income, ability, or background.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">02</div>
+          <h3>Empowerment</h3>
+          <p>We invest in teachers because empowered educators create empowered communities. Knowledge multiplies when it is shared freely.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">03</div>
+          <h3>Healing</h3>
+          <p>We honor yoga, meditation, sound healing, breathwork, herbalism, and reiki as essential practices that complement medicine and therapy.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">04</div>
+          <h3>Community</h3>
+          <p>Healing is more powerful when it is collective. Everything we build is rooted in community connection and mutual care.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">05</div>
+          <h3>Sustainability</h3>
+          <p>We build systems, not just programs. Our goal is a self-sustaining ecosystem where scholarship alumni become the next generation of teachers and donors.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">06</div>
+          <h3>Inclusivity</h3>
+          <p>We serve all people of all genders and backgrounds. Our programs center those who have been historically excluded from wellness spaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="story-inner">
+      <div class="story-image fade-up">
+        <img src="images/25-09-RA-MV--0863.jpg" alt="Yoga practitioner in meditation" />
+      </div>
+      <div class="story-text">
+        <span class="section-label fade-up">Our Story</span>
+        <h2 class="fade-up">Why This Foundation Exists</h2>
+        <div class="gold-line fade-up"></div>
+        <p class="fade-up">The wellness industry is booming — and yet the teachers who make it possible are among the least financially supported professionals in the country. Trainings cost $3,000 to $10,000. Class pay ranges from $25 to $75. The math does not add up.</p>
+        <p class="fade-up">Body Bend Yoga Foundation was created to bridge that gap. Founded by wellness educators who lived this reality, BBYCF exists so that teachers never have to choose between deepening their practice and paying their bills.</p>
+        <p class="fade-up">We started in Southern California — hosting community classes, workshops, and wellness events — and we are building toward a national network of funded, empowered educators who carry healing into every corner of this country.</p>
+        <br />
+        <a href="partner.html" class="btn btn-outline-gold fade-up">Support the Mission</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="leadership">
+    <div class="leadership-inner">
+      <div class="leadership-photo fade-up">
+        <img src="images/Drew%20Muse%20Headshots.JPG" alt="Drew Muse, President of Body Bend Yoga Foundation" />
+        <div class="leadership-photo-tag">
+          <span>Founder &amp; President</span>
+        </div>
+      </div>
+      <div class="leadership-text">
+        <span class="section-label fade-up">Leadership</span>
+        <h2 class="leader-name fade-up">Drew Muse</h2>
+        <span class="leader-title fade-up">President (CEO) &amp; Treasurer</span>
+        <div class="gold-line fade-up"></div>
+        <p class="fade-up">Drew Muse is a wellness educator and community builder whose vision drives Body Bend Yoga Foundation. Having experienced firsthand the financial barriers that prevent teachers from deepening their practice, Drew created BBYCF to ensure that no educator has to choose between growth and stability.</p>
+        <p class="fade-up">Under Drew's leadership, the foundation is building a nationwide network of empowered wellness practitioners equipped to serve their communities with knowledge, confidence, and care.</p>
+        <div class="board-list fade-up">
+          <span class="board-list-label">Board of Directors</span>
+          <div class="board-members">
+            <span class="board-member">Tanya Pereira &mdash; Secretary</span>
+            <span class="board-member">Alicia Ester &mdash; Board Member</span>
+            <span class="board-member">Rebekah Rivera &mdash; Board Member</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION CTA -->
+  <section class="vision-band">
+    <div class="vision-band-inner">
+      <span class="section-label fade-up">Join the Movement</span>
+      <h2 class="fade-up">Be Part of What We Are Building</h2>
+      <div class="gold-line center fade-up"></div>
+      <p class="fade-up">Whether you give, partner, or simply spread the word, you are part of a movement that is changing lives through the power of healing and education.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="donate.html" class="btn btn-gold fade-up">Donate</a>
+        <a href="partner.html" class="btn btn-outline fade-up">Partner With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-name">Body Bend Yoga</div>
+          <div class="footer-brand-sub">Foundation</div>
+          <p>Making holistic wellness accessible for all, through scholarships, community programming, and a growing network of empowered educators.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="index.html#programs">Programs</a>
+          <a href="partner.html">Partner With Us</a>
+          <a href="donate.html">Donate</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/bodybendyoga/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:hello@bodybendyoga.org">hello@bodybendyoga.org</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Body Bend Yoga Foundation. All rights reserved.</span>
+        <span>Southern California &middot; Serving Communities Nationwide</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
