@@ -9,126 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .about-hero {
-      min-height: 60vh;
-      display: flex;
-      align-items: flex-end;
-      padding: calc(var(--nav-height) + 4rem) 3rem 5rem;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 20% 80%, rgba(61,107,87,0.15) 0%, transparent 60%);
-    }
-    .about-hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      width: 100%;
-    }
-    .about-hero h1 { font-style: italic; max-width: 700px; }
-    .about-hero h1 em { font-style: normal; color: var(--gold); }
-
-    .mission-vision {
-      padding: 8rem 3rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .mission-vision-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-    }
-    .mv-block h3 { font-size: 1.8rem; margin-bottom: 1.2rem; }
-    .mv-block p { max-width: none; }
-
-    .values {
-      padding: 8rem 3rem;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    .values-inner { max-width: var(--max-width); margin: 0 auto; }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 4rem;
-    }
-    .value-card {
-      background: var(--surface);
-      padding: 2.5rem 2rem;
-      transition: background var(--transition);
-    }
-    .value-card:hover { background: var(--surface-2); }
-    .value-number {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      color: rgba(201,168,76,0.2);
-      line-height: 1;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .value-card h3 { font-size: 1.1rem; margin-bottom: 0.8rem; }
-    .value-card p { font-size: 0.9rem; max-width: none; }
-
-    .story {
-      padding: 8rem 3rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .story-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-    .story-image img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      object-position: center top;
-    }
-    .story-text h2 { margin-bottom: 1.5rem; }
-    .story-text p { margin-bottom: 1.2rem; }
-
-    .vision-band {
-      padding: 7rem 3rem;
-      background: var(--green);
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-    }
-    .vision-band-inner { max-width: 720px; margin: 0 auto; }
-    .vision-band h2 { margin-bottom: 1.2rem; }
-    .vision-band p { margin: 0 auto 2.5rem; font-size: 1.05rem; }
-
-    @media (max-width: 1024px) {
-      .mission-vision-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .story-inner { grid-template-columns: 1fr; }
-      .story-image { display: none; }
-      .values-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .about-hero, .mission-vision, .values, .story, .vision-band { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .values-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
-  <nav class="nav scrolled" id="nav">
+  <nav class="nav dark" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
         <span class="nav-logo-main">Body Bend Yoga</span>
@@ -144,8 +28,8 @@
   </nav>
 
   <!-- HERO -->
-  <section class="about-hero">
-    <div class="about-hero-inner">
+  <section class="page-hero">
+    <div class="page-hero-inner">
       <span class="section-label fade-up">Our Foundation</span>
       <h1 class="fade-up">Rooted in <em>Community.</em><br />Built for the Healers.</h1>
       <div class="gold-line fade-up"></div>
