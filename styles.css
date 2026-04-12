@@ -475,7 +475,7 @@ em, i { font-family: var(--font-display); font-style: italic; }
   width: 100%;
   height: 240px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 65%;
 }
 
 .story-card-body { padding: 1.8rem; }
