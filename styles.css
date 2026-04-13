@@ -282,9 +282,9 @@ em, i { font-family: var(--font-display); font-style: italic; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('images/group-hero.jpg.jpeg');
+  background-image: url('images/6a25bd227867eaf8a1f1d8aca8cb63e7.jpg');
   background-size: cover;
-  background-position: center 70%;
+  background-position: center center;
   transform: scale(1.04);
   transition: transform 10s ease;
 }
