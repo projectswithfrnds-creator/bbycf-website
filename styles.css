@@ -568,8 +568,8 @@ em, i { font-family: var(--font-display); font-style: italic; }
 
 .about-image-small img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: center top;
   transition: transform 0.8s ease;
   display: block;
