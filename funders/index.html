@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Funders | Body Bend Yoga Community Foundation</title>
+  <meta name="description" content="Funding model and endowment assumptions for Body Bend Yoga Community Foundation donors and funders." />
+  <style>
+    :root {
+      --forest: #1F4939;
+      --forest-deep: #162f27;
+      --canopy: #2F6B55;
+      --sage: #9CAF88;
+      --clay: #B8643A;
+      --ochre: #D49A39;
+      --bark: #6F4B36;
+      --sand: #E7D4B4;
+      --cream: #F7F1E7;
+      --paper: #fbf7ee;
+      --ink: #1D211D;
+      --muted: #6c776c;
+      --line: rgba(31, 73, 57, .16);
+      --shadow: 0 26px 80px rgba(31, 73, 57, .12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(212,154,57,.12), transparent 24rem),
+        radial-gradient(circle at 90% 8%, rgba(47,111,115,.13), transparent 28rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: Inter, Avenir, Segoe UI, Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1080px, calc(100vw - 36px)); margin: 0 auto; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(22, 47, 39, .92);
+      color: var(--cream);
+      border-bottom: 1px solid rgba(247,241,231,.16);
+      backdrop-filter: blur(16px);
+    }
+    .nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 16px 0; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: .02em; }
+    .nav a:not(.brand) { text-decoration: none; opacity: .88; font-size: .94rem; }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
+    .hero { padding: 88px 0 42px; }
+    .eyebrow {
+      color: var(--clay);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      margin-bottom: 16px;
+    }
+    h1, h2, h3, h4 { line-height: 1.04; color: var(--forest-deep); margin: 0; }
+    h1 { font-size: clamp(3rem, 8vw, 6.5rem); max-width: 880px; letter-spacing: -.05em; }
+    .intro { max-width: 740px; color: var(--bark); font-size: 1.15rem; margin: 24px 0 0; }
+    .ops-panel { padding: 38px 0 90px; }
+    .section-head { display: grid; grid-template-columns: 240px 1fr; gap: 34px; align-items: start; margin-bottom: 24px; }
+    .section-head h2 { font-size: clamp(2.2rem, 5vw, 4.6rem); letter-spacing: -.045em; }
+    .section-head p { color: var(--bark); max-width: 720px; font-size: 1.05rem; }
+    .ops-card {
+      background: linear-gradient(145deg, rgba(247,241,231,.94), rgba(231,212,180,.54));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      padding: clamp(24px, 4vw, 46px);
+      max-width: 900px;
+    }
+    .ops-card h3 { font-size: clamp(1.7rem, 3vw, 2.6rem); margin-bottom: 20px; }
+    .ops-card h4 { font-size: 1.35rem; margin: 28px 0 12px; color: var(--canopy); }
+    ul { margin: 0; padding-left: 1.2rem; }
+    li { margin: 10px 0; color: var(--bark); }
+    strong { color: var(--forest-deep); }
+    .muted { color: var(--muted); }
+    .back { display: inline-flex; margin-top: 30px; font-weight: 800; color: var(--forest); text-decoration: none; }
+    @media (max-width: 760px) {
+      .nav .wrap { align-items: flex-start; flex-direction: column; }
+      .section-head { grid-template-columns: 1fr; gap: 12px; }
+      .hero { padding-top: 54px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="wrap">
+      <a class="brand" href="/">Body Bend Yoga Community Foundation</a>
+      <div class="nav-links">
+        <a href="/#about">About</a>
+        <a href="/#programs">Programs</a>
+        <a href="/#donate">Donate</a>
+        <a href="/#signup">Signup</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Financial Model</div>
+      <h1>How Our Funding Model Works</h1>
+      <p class="intro">All figures, growth, and endowment assumptions for BBYCF funders and donors. For full donor-impact details and the latest scholarship goals, contact the board.</p>
+    </div>
+  </header>
+
+  <main class="ops-panel" id="funders" aria-label="Funding and intake infrastructure">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Funding Assumptions</div>
+        <div>
+          <h2>Conservative growth, long-term teacher support.</h2>
+          <p>These assumptions are referenced from the current projections model and should be reviewed with the board before any formal donor package is published.</p>
+        </div>
+      </div>
+      <article class="ops-card">
+        <h3>Key Financial Assumptions</h3>
+        <ul>
+          <li><strong>Year 1 to Year 2 Revenue Growth Rate:</strong> 20.0% <span class="muted">(Conservative: 15 to 25%)</span></li>
+          <li><strong>Year 2 to Year 3 Revenue Growth Rate:</strong> 25.0% <span class="muted">(Growth phase: 20 to 30%)</span></li>
+          <li><strong>Year 3 to Year 4 Revenue Growth Rate:</strong> 20.0%</li>
+          <li><strong>Year 4 to Year 5 Revenue Growth Rate:</strong> 15.0% <span class="muted">(Mature: 10 to 20%)</span></li>
+          <li><strong>Expense Growth Rate vs Revenue:</strong> 80.0% <span class="muted">(Expenses grow slower than revenue)</span></li>
+        </ul>
+        <h4>Endowment Model</h4>
+        <ul>
+          <li><strong>Endowment Goal:</strong> $100,000</li>
+          <li><strong>Annual Draw Rate:</strong> 5.0%</li>
+          <li><strong>Investment Return Rate:</strong> 7.0%</li>
+        </ul>
+        <p class="muted">Growth rates and endowment assumptions are referenced directly in the Projections sheet. For more detail, contact the BBYCF board.</p>
+        <a class="back" href="/">Back to homepage</a>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,354 +1,1395 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Body Bend Yoga Community Foundation — Empowering the Next Generation of Teachers</title>
-  <meta name="description" content="BBYCF provides yoga scholarships to practicing and aspiring teachers, empowering them to continue their journey as students and step into leadership." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Body Bend Yoga Community Foundation</title>
+  <style>
+    :root {
+      --forest: #1F4939;
+      --forest-deep: #162f27;
+      --canopy: #2F6B55;
+      --sage: #9CAF88;
+      --clay: #B8643A;
+      --ochre: #D49A39;
+      --bark: #6F4B36;
+      --sand: #E7D4B4;
+      --cream: #F7F1E7;
+      --paper: #fbf7ee;
+      --teal: #2F6F73;
+      --sky: #8EB8B1;
+      --ink: #1D211D;
+      --muted: #6c776c;
+      --line: rgba(31, 73, 57, .16);
+      --shadow: 0 26px 80px rgba(31, 73, 57, .12);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, Avenir, Segoe UI, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(212,154,57,.11), transparent 24rem),
+        radial-gradient(circle at 86% 20%, rgba(47,111,115,.12), transparent 28rem),
+        radial-gradient(circle at 50% 86%, rgba(156,175,136,.11), transparent 30rem);
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(31,73,57,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(31,73,57,.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .page-note {
+      display: none;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1180px, calc(100vw - 36px));
+      display: grid;
+      grid-template-columns: 230px 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid rgba(247,241,231,.35);
+      border-radius: 999px;
+      background: rgba(22, 47, 39, .52);
+      color: var(--cream);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.16);
+      transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(247,241,231,.9);
+      color: var(--forest);
+      border-color: rgba(31,73,57,.12);
+    }
+    .brand-lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+    .brand-lockup img { width: 54px; height: 54px; object-fit: contain; border-radius: 50%; background: rgba(247,241,231,.72); padding: 5px; }
+    .brand-name { display: grid; gap: 2px; line-height: 1; }
+    .brand-name strong { font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 500; white-space: nowrap; }
+    .brand-name span { font-size: 8px; letter-spacing: .24em; color: var(--clay); font-weight: 800; }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: clamp(14px, 2vw, 32px); font-size: 13px; letter-spacing: .05em; }
+    .nav-links a { text-decoration: none; opacity: .86; position: relative; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .28s var(--ease); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: var(--clay);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .04em;
+      transition: transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .btn:hover, .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(184,100,58,.26); }
+    .btn.secondary { background: rgba(247,241,231,.12); color: var(--cream); border-color: rgba(247,241,231,.42); }
+    .btn.secondary-dark { background: transparent; color: var(--forest); border-color: rgba(31,73,57,.24); }
+    .btn.small { min-height: 38px; padding: 0 16px; font-size: 12px; }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      color: var(--cream);
+      overflow: hidden;
+      background: var(--forest-deep);
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      background: var(--forest-deep);
+      transform: scale(1.08);
+      will-change: transform;
+      overflow: hidden;
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(15,34,28,.88) 0%, rgba(15,34,28,.54) 52%, rgba(15,34,28,.20) 100%),
+        linear-gradient(180deg, rgba(15,34,28,.14) 0%, rgba(15,34,28,.86) 100%);
+      z-index: 2;
+    }
+    .hero-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.05);
+      animation: heroFilm 24s infinite;
+      filter: saturate(.92) contrast(1.02);
+    }
+    .hero-media img:nth-child(1) { opacity: 1; animation-delay: 0s; }
+    .hero-media img:nth-child(2) { animation-delay: 6s; }
+    .hero-media img:nth-child(3) { animation-delay: 12s; }
+    .hero-media img:nth-child(4) { animation-delay: 18s; }
+    .hero-film-label {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(247,241,231,.12);
+      border: 1px solid rgba(247,241,231,.22);
+      color: rgba(247,241,231,.72);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+    .hero-film-label::before { content: "▶"; color: var(--clay); font-size: 10px; }
+    .hero-ripple {
+      position: absolute;
+      right: -16vw;
+      bottom: -18vw;
+      width: 70vw;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(247,241,231,.16);
+      opacity: .75;
+    }
+    .hero-ripple::before, .hero-ripple::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgba(247,241,231,.13);
+      border-radius: 50%;
+    }
+    .hero-ripple::after { inset: 26%; opacity: .8; }
+    .hero-inner {
+      position: relative;
+      width: min(1180px, calc(100vw - 44px));
+      margin: 0 auto;
+      padding: 180px 0 80px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(30px, 6vw, 90px);
+      align-items: end;
+    }
+    .kicker {
+      font-size: 12px;
+      letter-spacing: .28em;
+      color: var(--sage);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, .serif {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      letter-spacing: -.045em;
+    }
+    h1 {
+      font-size: clamp(68px, 10vw, 146px);
+      line-height: .9;
+      margin: 22px 0 22px;
+      max-width: 780px;
+    }
+    .hero p {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.58;
+      color: rgba(247,241,231,.82);
+      max-width: 620px;
+      margin: 0 0 32px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-proof {
+      align-self: end;
+      justify-self: end;
+      width: min(380px, 100%);
+      padding: 24px;
+      border: 1px solid rgba(247,241,231,.18);
+      border-radius: var(--radius-lg);
+      background: rgba(247,241,231,.1);
+      backdrop-filter: blur(18px);
+    }
+    .hero-proof .line { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(247,241,231,.14); }
+    .hero-proof .line:first-child { border-top: 0; padding-top: 0; }
+    .hero-proof strong { font-size: 26px; color: white; font-family: Georgia, 'Times New Roman', serif; font-weight: 500; }
+    .hero-proof span { color: rgba(247,241,231,.76); font-size: 13px; line-height: 1.4; }
+
+    .ticker {
+      position: relative;
+      overflow: hidden;
+      background: var(--clay);
+      color: var(--cream);
+      border-top: 1px solid rgba(255,255,255,.18);
+      border-bottom: 1px solid rgba(31,73,57,.16);
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex;
+      gap: 24px;
+      padding: 14px 0;
+      animation: ticker 32s linear infinite;
+      font-size: 13px;
+      letter-spacing: .18em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .ticker-track span::after { content: "•"; margin-left: 24px; opacity: .55; }
+
+    section { position: relative; padding: clamp(80px, 9vw, 142px) 0; }
+    .wrap { width: min(1180px, calc(100vw - 44px)); margin: 0 auto; }
+    .section-head { display: grid; grid-template-columns: .36fr .64fr; gap: 44px; align-items: start; margin-bottom: 48px; }
+    .section-head h2 { margin: 0; color: var(--forest); font-size: clamp(46px, 6.6vw, 92px); line-height: .94; max-width: 760px; }
+    .section-head p { margin: 10px 0 0; color: var(--muted); font-size: 18px; line-height: 1.7; max-width: 620px; }
+    .eyebrow { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--clay); font-weight: 900; }
+
+    .mission { background: var(--sand); overflow: hidden; }
+    .mission .rings {
+      position: absolute;
+      inset: auto auto 6% 50%;
+      width: min(760px, 76vw);
+      aspect-ratio: 1;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 1px solid rgba(31,73,57,.10);
+      opacity: .92;
+    }
+    .mission .rings::before, .mission .rings::after { content: ""; position: absolute; border: 1px solid rgba(31,73,57,.10); border-radius: 50%; }
+    .mission .rings::before { inset: 18%; }
+    .mission .rings::after { inset: 36%; }
+    .mission-quote {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 20px 0;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 1.12;
+      color: var(--forest-deep);
+      font-family: Georgia, 'Times New Roman', serif;
+      letter-spacing: -.05em;
+    }
+    .mission-copy { position: relative; z-index: 1; max-width: 750px; margin: 28px auto 0; text-align: center; color: rgba(29,33,29,.62); line-height: 1.7; font-size: 17px; }
+
+    .ripple-model { background: var(--paper); overflow: hidden; }
+    .model-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(36px, 7vw, 90px); align-items: center; }
+    .model-visual {
+      position: sticky;
+      top: 120px;
+      aspect-ratio: 9 / 16;
+      min-height: 0;
+      width: min(100%, 460px);
+      justify-self: center;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(31,73,57,.42), rgba(47,107,85,.32)),
+        url("assets/video/ripple-scroll-poster.jpg") center / cover no-repeat,
+        linear-gradient(135deg, rgba(31,73,57,.96), rgba(47,107,85,.88));
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .ripple-poster,
+    .ripple-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      filter: saturate(.92) contrast(1.05);
+    }
+    .ripple-poster {
+      z-index: 0;
+      opacity: .86;
+    }
+    .ripple-video {
+      z-index: 1;
+      opacity: .82;
+      transition: opacity .25s var(--ease);
+    }
+    .model-visual:not(.video-ready) .ripple-video {
+      opacity: 0;
+    }
+    .model-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(251,241,223,.12), transparent 28%),
+        linear-gradient(180deg, rgba(31,73,57,.08), rgba(31,73,57,.48));
+      pointer-events: none;
+    }
+    .model-visual .ring {
+      position: absolute;
+      left: 50%; top: 52%;
+      border: 1px solid rgba(247,241,231,.20);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(var(--scale, 1));
+      opacity: var(--opacity, .7);
+      width: var(--size); height: var(--size);
+      transition: transform .7s var(--ease), opacity .7s var(--ease);
+      z-index: 3;
+    }
+    .model-steps { display: grid; gap: 18px; }
+    .step-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.56);
+      box-shadow: 0 10px 44px rgba(31,73,57,.05);
+      transition: transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+    }
+    .step-card:hover { transform: translateY(-4px); background: white; border-color: rgba(184,100,58,.28); }
+    .step-card span { color: var(--clay); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; font-weight: 900; }
+    .step-card h3 { margin: 8px 0 8px; font-size: clamp(28px, 3vw, 44px); color: var(--forest); }
+    .step-card p { margin: 0; color: var(--muted); line-height: 1.65; }
+
+    .pathways { background: var(--cream); }
+    .path-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .path-card {
+      min-height: 260px;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31,73,57,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.68), rgba(247,241,231,.56));
+      text-decoration: none;
+      display: grid;
+      align-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+    .path-card::before {
+      content: "";
+      position: absolute;
+      width: 190px; height: 190px;
+      border: 1px solid rgba(47,111,115,.16);
+      border-radius: 50%;
+      right: -70px; top: -70px;
+      transition: transform .45s var(--ease);
+    }
+    .path-card:hover::before { transform: scale(1.25); }
+    .path-card .num { color: var(--clay); font-size: 12px; letter-spacing: .16em; font-weight: 900; }
+    .path-card h3 { margin: 0; font-size: 27px; line-height: 1; color: var(--forest); letter-spacing: -.05em; }
+    .path-card p { margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .living-gallery {
+      background: linear-gradient(180deg, var(--sand) 0%, var(--cream) 100%);
+      padding-top: clamp(70px, 8vw, 120px);
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+    .gallery-intro { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+    .gallery-intro h2 { margin: 12px 0 18px; color: var(--forest); font-size: clamp(44px, 6vw, 88px); line-height: .92; }
+    .gallery-intro p { margin: 0 auto; color: var(--muted); line-height: 1.7; font-size: 17px; max-width: 620px; }
+    .photo-grid {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: clamp(150px, 18vw, 260px);
+      gap: 0;
+      background: var(--forest);
+    }
+    .photo-grid figure { margin: 0; position: relative; overflow: hidden; background: var(--forest-deep); }
+    .photo-grid figure:nth-child(1) { grid-column: span 3; }
+    .photo-grid figure:nth-child(2) { grid-column: span 2; }
+    .photo-grid figure:nth-child(3) { grid-column: span 3; }
+    .photo-grid figure:nth-child(4) { grid-column: span 2; }
+    .photo-grid figure:nth-child(5) { grid-column: span 2; }
+    .photo-grid figure:nth-child(6) { grid-column: span 4; }
+    .photo-grid figure:nth-child(7) { grid-column: span 3; }
+    .photo-grid figure:nth-child(8) { grid-column: span 2; }
+    .photo-grid figure:nth-child(9) { grid-column: span 3; }
+    .photo-grid img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(.98); transform: scale(1.015); transition: transform .65s var(--ease), filter .65s var(--ease); }
+    .photo-grid figure:hover img { transform: scale(1.08); filter: saturate(1.05) contrast(1.04); }
+    .photo-grid figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: rgba(22,47,39,.62);
+      color: rgba(247,241,231,.82);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .35s var(--ease), transform .35s var(--ease);
+      backdrop-filter: blur(10px);
+    }
+    .photo-grid figure:hover figcaption { opacity: 1; transform: none; }
+
+    .programs { background: var(--forest-deep); color: var(--cream); overflow: hidden; }
+    .programs .section-head h2, .programs .section-head p { color: var(--cream); }
+    .programs .section-head p { opacity: .74; }
+    .program-list { display: grid; border-top: 1px solid rgba(247,241,231,.14); }
+    .program-row {
+      display: grid;
+      grid-template-columns: .2fr .45fr .35fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(247,241,231,.14);
+      text-decoration: none;
+      color: inherit;
+    }
+    .program-row .index { color: var(--sage); letter-spacing: .16em; font-weight: 900; }
+    .program-row h3 { margin: 0; color: white; font-size: clamp(28px, 3vw, 48px); }
+    .program-row p { margin: 0; color: rgba(247,241,231,.66); line-height: 1.55; }
+    .program-row .arrow { width: 42px; height: 42px; border: 1px solid rgba(247,241,231,.28); border-radius: 50%; display: grid; place-items: center; transition: transform .3s var(--ease), background .3s var(--ease); }
+    .program-row:hover .arrow { transform: translateX(8px); background: var(--clay); }
+
+    .story-band {
+      min-height: 620px;
+      color: var(--cream);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: var(--forest);
+    }
+    .story-image {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(90deg, rgba(22,47,39,.78), rgba(22,47,39,.16)), url('assets/img/fern-growth.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.08);
+    }
+    .story-band .wrap { position: relative; z-index: 1; padding-bottom: 78px; }
+    .story-band h2 { max-width: 780px; font-size: clamp(52px, 8vw, 118px); line-height: .92; margin: 12px 0 20px; }
+    .story-band p { max-width: 560px; color: rgba(247,241,231,.78); font-size: 18px; line-height: 1.65; }
+
+    .impact { background: var(--sand); }
+    .impact-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .metric { padding: 28px; border-radius: var(--radius-lg); background: rgba(247,241,231,.64); border: 1px solid rgba(31,73,57,.12); }
+    .metric strong { display: block; font-size: clamp(42px, 6vw, 78px); color: var(--forest); font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.06em; }
+    .metric span { color: var(--muted); line-height: 1.4; }
+
+    .leadership { background: var(--paper); overflow: hidden; }
+    .team-stage {
+      display: grid;
+      grid-template-columns: minmax(320px, .48fr) minmax(0, .52fr);
+      gap: 0;
+      align-items: stretch;
+      border-radius: 42px;
+      overflow: hidden;
+      background: var(--forest);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      min-height: 680px;
+      position: relative;
+    }
+    .team-portrait {
+      position: relative;
+      overflow: hidden;
+      background: var(--forest-deep);
+    }
+    .team-portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(22,47,39,.02), rgba(22,47,39,.34));
+      pointer-events: none;
+    }
+    .team-portrait img {
+      width: 100%;
+      height: 100%;
+      min-height: 680px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.9) contrast(.98);
+      transform: scale(1.01);
+      transition: opacity .32s var(--ease), transform .58s var(--ease), filter .4s var(--ease);
+    }
+    .team-portrait.switching img { opacity: .18; transform: scale(1.08); filter: blur(8px) saturate(.7); }
+    .team-copy {
+      padding: clamp(34px, 5.8vw, 82px);
+      align-self: center;
+      position: relative;
+      z-index: 1;
+    }
+    .team-copy::before {
+      content: "";
+      position: absolute;
+      right: -22%;
+      bottom: -24%;
+      width: 70%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(247,241,231,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 72px rgba(247,241,231,.025), 0 0 0 144px rgba(247,241,231,.018);
+      pointer-events: none;
+    }
+    .team-copy h2 { margin: 12px 0 8px; font-size: clamp(52px, 7vw, 96px); line-height: .9; position: relative; }
+    .team-role { color: var(--sage); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; font-weight: 900; margin-bottom: 26px; position: relative; }
+    .team-copy p { color: rgba(247,241,231,.76); line-height: 1.75; font-size: 17px; max-width: 680px; position: relative; }
+    .team-social { color: var(--cream); text-decoration: none; display: inline-flex; margin-top: 6px; border-bottom: 1px solid rgba(247,241,231,.44); position: relative; }
+    .team-picker {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 36px;
+      position: relative;
+    }
+    .team-tab {
+      appearance: none;
+      text-align: left;
+      cursor: pointer;
+      border: 1px solid rgba(247,241,231,.14);
+      border-radius: 18px;
+      background: rgba(247,241,231,.08);
+      color: rgba(247,241,231,.72);
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+      align-items: center;
+      transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
+    }
+    .team-tab:hover, .team-tab.active { transform: translateY(-2px); background: rgba(247,241,231,.15); border-color: rgba(184,100,58,.65); color: var(--cream); }
+    .team-tab img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .team-tab strong { display: block; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; line-height: .95; font-weight: 400; }
+    .team-tab span { display: block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; opacity: .72; margin-top: 5px; }
+
+    .donate-panel { background: var(--cream); }
+    .donate-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 42px;
+      background: linear-gradient(135deg, var(--forest-deep), var(--canopy));
+      color: var(--cream);
+      padding: clamp(44px, 8vw, 90px);
+      display: grid;
+      grid-template-columns: .72fr .28fr;
+      gap: 40px;
+      box-shadow: var(--shadow);
+    }
+    .donate-card::after { content: ""; position: absolute; right: -12%; bottom: -48%; width: 58%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(247,241,231,.16); box-shadow: 0 0 0 80px rgba(247,241,231,.025), 0 0 0 160px rgba(247,241,231,.02); }
+    .donate-card h2 { font-size: clamp(54px, 7vw, 110px); line-height: .9; margin: 8px 0 22px; max-width: 760px; }
+    .donate-card p { color: rgba(247,241,231,.78); line-height: 1.75; font-size: 18px; max-width: 680px; }
+    .giving-list { position: relative; z-index: 1; display: grid; gap: 10px; align-content: end; }
+    .giving-list div { padding: 14px 16px; border-radius: 16px; background: rgba(247,241,231,.10); display: flex; justify-content: space-between; gap: 16px; border: 1px solid rgba(247,241,231,.12); }
+
+    .final-cta { background: var(--forest-deep); color: var(--cream); text-align: center; }
+    .final-cta h2 { font-size: clamp(54px, 7vw, 104px); line-height: .92; margin: 12px auto 24px; max-width: 900px; }
+    .final-cta p { margin: 0 auto 32px; max-width: 640px; color: rgba(247,241,231,.72); line-height: 1.7; }
+
+    .signup-section {
+      background: linear-gradient(180deg, var(--forest-deep), #10251f);
+      color: var(--cream);
+      padding-top: 112px;
+      scroll-margin-top: 118px;
+    }
+    .signup-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: .82fr 1fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+      padding: clamp(34px, 6vw, 72px);
+      border-radius: 36px;
+      border: 1px solid rgba(247,241,231,.16);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(200,138,61,.20), transparent 28rem),
+        linear-gradient(135deg, rgba(247,241,231,.10), rgba(247,241,231,.04));
+      box-shadow: 0 24px 80px rgba(0,0,0,.18);
+    }
+    .signup-card::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 28px;
+      border: 1px dashed rgba(247,241,231,.18);
+      pointer-events: none;
+    }
+    .signup-copy, .signup-form { position: relative; z-index: 1; }
+    .signup-copy h2 { font-size: clamp(35px, 3.55vw, 44px); line-height: 1.2; letter-spacing: -.035em; margin: 12px 0 18px; color: var(--cream); }
+    .signup-copy p { color: rgba(247,241,231,.72); line-height: 1.85; font-size: 16px; max-width: 560px; margin: 0; }
+    .signup-options { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .signup-pill { padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(247,241,231,.20); background: rgba(247,241,231,.08); color: rgba(247,241,231,.76); font-size: 12px; letter-spacing: .05em; }
+    .signup-form { display: grid; gap: 14px; }
+    .signup-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .signup-field { display: grid; gap: 7px; text-align: left; }
+    .signup-field label, .signup-consent legend { color: rgba(247,241,231,.70); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; }
+    .signup-field input {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(247,241,231,.20);
+      border-radius: 16px;
+      padding: 0 16px;
+      background: rgba(247,241,231,.10);
+      color: var(--cream);
+      font: inherit;
+      outline: none;
+    }
+    .signup-field input::placeholder { color: rgba(247,241,231,.42); }
+    .signup-field input:focus { border-color: rgba(200,138,61,.85); box-shadow: 0 0 0 3px rgba(200,138,61,.18); }
+    .signup-consent { border: 0; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; }
+    .signup-checks { display: flex; flex-wrap: wrap; gap: 10px; }
+    .signup-check { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 999px; border: 1px solid rgba(247,241,231,.16); background: rgba(247,241,231,.07); color: rgba(247,241,231,.76); font-size: 13px; }
+    .signup-check input { accent-color: var(--clay); }
+    .signup-note { color: rgba(247,241,231,.52); font-size: 12px; line-height: 1.55; margin: 0; }
+    .signup-status { min-height: 20px; color: var(--sand); font-size: 13px; margin: 0; }
+
+    footer { background: #10251f; color: var(--cream); padding: 68px 0 34px; }
+    .footer-grid { display: grid; grid-template-columns: 1.1fr repeat(3, .7fr); gap: 42px; }
+    footer h4 { color: var(--clay); letter-spacing: .22em; font-size: 11px; text-transform: uppercase; margin: 0 0 18px; }
+    footer a { display: block; color: rgba(247,241,231,.68); text-decoration: none; margin: 12px 0; font-size: 14px; }
+    footer p { color: rgba(247,241,231,.65); line-height: 1.7; max-width: 310px; }
+    .footer-bottom { border-top: 1px solid rgba(247,241,231,.12); margin-top: 46px; padding-top: 20px; display: flex; justify-content: space-between; color: rgba(247,241,231,.45); font-size: 12px; }
+
+    .reveal { opacity: .86; transform: translateY(14px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal[data-delay="1"] { transition-delay: .08s; }
+    .reveal[data-delay="2"] { transition-delay: .14s; }
+    .reveal[data-delay="3"] { transition-delay: .20s; }
+
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes heroFilm {
+      0% { opacity: 0; transform: scale(1.04) translateX(0); }
+      6% { opacity: 1; }
+      24% { opacity: 1; }
+      31% { opacity: 0; transform: scale(1.12) translateX(-1.4%); }
+      100% { opacity: 0; }
+    }
+
+
+    /* Original-site rhythm calibration: keep the redesigned look, but match bbycf.org's calmer section scale and type sizing. */
+    .nav { width: min(1148px, calc(100vw - 56px)); top: 14px; padding: 10px 14px; }
+    .brand-lockup img { width: 48px; height: 48px; }
+    .brand-name strong { font-size: 16px; }
+    .nav-links { font-size: 12.5px; gap: clamp(14px, 1.9vw, 28px); }
+    .nav-cta, .btn { min-height: 52px; padding: 0 24px; font-size: 12.8px; font-weight: 700; }
+    .nav-cta { min-height: 42px; padding: 0 20px; }
+    .hero { min-height: 680px; }
+    .hero-inner { width: min(1148px, calc(100vw - 56px)); padding: 150px 0 72px; grid-template-columns: 1.08fr .92fr; }
+    h1 { font-size: clamp(58px, 6.5vw, 82px); line-height: 1.1; letter-spacing: -.038em; max-width: 700px; margin: 18px 0 20px; }
+    .hero p { font-size: 16.8px; line-height: 1.8; max-width: 500px; margin-bottom: 34px; }
+    .hero-proof { width: min(360px, 100%); padding: 20px; }
+    .hero-proof strong { font-size: 24px; }
+    .hero-proof span { font-size: 12.5px; }
+    .ticker-track { padding: 12px 0; font-size: 12px; }
+    section { padding: 96px 0; }
+    .wrap { width: min(1148px, calc(100vw - 56px)); }
+    .section-head { grid-template-columns: .34fr .66fr; gap: 40px; margin-bottom: 42px; }
+    .section-head h2, .gallery-intro h2, .story-band h2, .donate-card h2, .final-cta h2 { font-size: clamp(35px, 3.55vw, 44px); line-height: 1.2; letter-spacing: -.035em; }
+    .section-head p, .gallery-intro p, .story-band p, .donate-card p, .final-cta p { font-size: 16px; line-height: 1.85; }
+    .eyebrow, .kicker { font-size: 11px; letter-spacing: .26em; }
+    .mission { padding: 96px 0; }
+    .mission-quote { max-width: 760px; padding: 10px 0; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.55; letter-spacing: -.035em; }
+    .mission-copy { max-width: 760px; font-size: 15.2px; line-height: 1.85; margin-top: 22px; }
+    .living-gallery { padding-top: 96px; }
+    .gallery-intro { max-width: 760px; margin-bottom: 42px; }
+    .photo-grid { grid-auto-rows: clamp(132px, 14vw, 210px); }
+    .ripple-model, .pathways, .programs, .impact, .leadership, .donate-panel, .final-cta { padding-top: 112px; padding-bottom: 112px; }
+    .signup-section { padding-bottom: 112px; }
+    .model-grid { gap: clamp(34px, 6vw, 78px); }
+    .model-visual { border-radius: 28px; }
+    .step-card { padding: 24px; }
+    .step-card h3 { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.12; }
+    .step-card p, .path-card p, .program-row p, .team-copy p { font-size: 15.5px; line-height: 1.7; }
+    .path-card { min-height: 220px; padding: 20px; }
+    .path-card h3 { font-size: 22px; line-height: 1.08; }
+    .program-row { padding: 24px 0; }
+    .program-row h3 { font-size: clamp(22px, 2.4vw, 32px); line-height: 1.12; }
+    .story-band { min-height: 420px; }
+    .story-band .wrap { padding-bottom: 64px; }
+    .metric { padding: 26px; }
+    .metric strong { font-size: clamp(38px, 4.6vw, 58px); }
+    .team-stage { min-height: 600px; border-radius: 34px; }
+    .team-portrait img { min-height: 600px; }
+    .team-copy { padding: clamp(34px, 5vw, 64px); }
+    .team-copy h2 { font-size: clamp(35px, 4vw, 52px); line-height: 1.08; letter-spacing: -.035em; }
+    .team-role { font-size: 12px; margin-bottom: 20px; }
+    .team-picker { margin-top: 30px; }
+    .team-tab strong { font-size: 16px; }
+    .donate-card { padding: clamp(42px, 6vw, 70px); border-radius: 34px; }
+    footer { padding: 64px 0 34px; }
+
+
+    /* Bohemian layer: earthy, tactile, handmade, global-but-grounded for BBYCF. */
+    :root {
+      --forest: #315844;
+      --forest-deep: #18372d;
+      --canopy: #5f8463;
+      --sage: #aeb58a;
+      --clay: #bf6f3f;
+      --ochre: #c88a3d;
+      --bark: #75513d;
+      --sand: #e6d1aa;
+      --cream: #fbf1df;
+      --paper: #fff7ea;
+      --teal: #3f7172;
+      --sky: #94b6a9;
+      --ink: #282319;
+      --muted: #766f5e;
+      --line: rgba(102, 76, 48, .18);
+      --shadow: 0 24px 70px rgba(76, 55, 32, .13);
+    }
+    body {
+      background:
+        radial-gradient(circle at 14% 12%, rgba(191,111,63,.12), transparent 25rem),
+        radial-gradient(circle at 88% 18%, rgba(95,132,99,.14), transparent 28rem),
+        linear-gradient(180deg, #fff7ea 0%, #f7ead5 100%);
+    }
+    body::after {
+      background-image:
+        radial-gradient(circle, rgba(117,81,61,.055) 1px, transparent 1.4px),
+        linear-gradient(45deg, rgba(191,111,63,.035) 25%, transparent 25%, transparent 75%, rgba(191,111,63,.035) 75%),
+        linear-gradient(-45deg, rgba(49,88,68,.025) 25%, transparent 25%, transparent 75%, rgba(49,88,68,.025) 75%);
+      background-size: 18px 18px, 44px 44px, 44px 44px;
+      opacity: .72;
+    }
+    .nav {
+      background: rgba(31, 55, 45, .76);
+      border-color: rgba(251,241,223,.48);
+      box-shadow: 0 18px 54px rgba(54,38,24,.2);
+    }
+    .nav.scrolled { background: rgba(255,247,234,.92); color: var(--forest-deep); }
+    .brand-lockup img { background: #fff6e8; box-shadow: 0 0 0 1px rgba(191,111,63,.2); }
+    .brand-name span, .eyebrow, .kicker, footer h4 { color: var(--clay); }
+    .hero-media::after {
+      background:
+        radial-gradient(circle at 78% 38%, rgba(191,111,63,.18), transparent 22rem),
+        linear-gradient(90deg, rgba(24,55,45,.91) 0%, rgba(24,55,45,.62) 55%, rgba(24,55,45,.25) 100%),
+        linear-gradient(180deg, rgba(24,55,45,.14) 0%, rgba(24,55,45,.88) 100%);
+    }
+    .hero-proof, .path-card, .step-card, .metric {
+      border-color: rgba(117,81,61,.18);
+    }
+    .hero-proof {
+      background:
+        linear-gradient(135deg, rgba(251,241,223,.16), rgba(251,241,223,.08)),
+        repeating-linear-gradient(135deg, rgba(251,241,223,.045) 0 6px, transparent 6px 13px);
+    }
+    .btn, .nav-cta { background: linear-gradient(135deg, #c97846, #a95b34); }
+    .btn.secondary, .btn.secondary-dark { background: rgba(251,241,223,.12); border-color: rgba(251,241,223,.44); }
+    .ticker {
+      background:
+        linear-gradient(90deg, #a95b34, #c97846, #a95b34),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.16) 0 10px, transparent 10px 20px);
+      box-shadow: inset 0 1px rgba(255,255,255,.18), inset 0 -1px rgba(0,0,0,.12);
+    }
+    .mission, .impact {
+      background:
+        radial-gradient(circle at 50% 10%, rgba(191,111,63,.08), transparent 22rem),
+        linear-gradient(180deg, #e9d2aa, #e4c99b);
+    }
+    .mission::before, .living-gallery::before, .impact::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 10px;
+      background:
+        radial-gradient(circle at 10px -1px, transparent 13px, rgba(117,81,61,.12) 14px, transparent 15px) 0 0 / 32px 10px repeat-x;
+      opacity: .55;
+      pointer-events: none;
+    }
+    .mission-quote::before, .mission-quote::after { color: rgba(191,111,63,.55); }
+    .mission-copy, .gallery-intro p, .section-head p { color: rgba(61,55,42,.68); }
+    .living-gallery, .pathways, .leadership, .donate-panel {
+      background:
+        radial-gradient(circle at 12% 14%, rgba(191,111,63,.08), transparent 22rem),
+        radial-gradient(circle at 86% 28%, rgba(95,132,99,.09), transparent 25rem),
+        var(--paper);
+    }
+    .gallery-intro h2, .section-head h2, .mission-quote, .path-card h3, .step-card h3 { color: var(--forest); }
+    .programs .section-head h2, .program-row h3, .team-copy h2, .donate-card h2, .final-cta h2 { color: var(--cream); }
+    .photo-grid {
+      background: #5d4b35;
+      border-top: 8px solid rgba(191,111,63,.38);
+      border-bottom: 8px solid rgba(191,111,63,.25);
+    }
+    .photo-grid figure::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(251,241,223,.08), transparent 28%), linear-gradient(180deg, transparent, rgba(40,35,25,.14));
+      pointer-events: none;
+    }
+    .photo-grid img { filter: saturate(.95) sepia(.08) contrast(.98); }
+    .team-stage, .donate-card {
+      background:
+        radial-gradient(circle at 80% 80%, rgba(251,241,223,.08), transparent 25rem),
+        repeating-linear-gradient(135deg, rgba(251,241,223,.035) 0 8px, transparent 8px 18px),
+        linear-gradient(135deg, var(--forest-deep), #4f7861);
+    }
+    .model-visual::after, .donate-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: inherit;
+      border: 1px dashed rgba(251,241,223,.16);
+      z-index: 4;
+      pointer-events: none;
+    }
+    .step-card, .path-card, .metric {
+      background:
+        linear-gradient(180deg, rgba(255,250,239,.78), rgba(251,241,223,.62)),
+        repeating-linear-gradient(90deg, rgba(191,111,63,.04) 0 6px, transparent 6px 18px);
+      box-shadow: 0 18px 55px rgba(76,55,32,.07);
+    }
+    .path-card::after, .step-card::after, .metric::after {
+      content: "";
+      position: absolute;
+      left: 16px; right: 16px; bottom: 12px;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, rgba(191,111,63,.42) 0 10px, transparent 10px 18px);
+      opacity: .28;
+      pointer-events: none;
+    }
+    .programs, .final-cta, footer {
+      background:
+        radial-gradient(circle at 20% 15%, rgba(191,111,63,.12), transparent 28rem),
+        linear-gradient(180deg, #17382d, #10261f);
+    }
+    .program-row { border-color: rgba(251,241,223,.15); }
+    .story-image {
+      background-image:
+        linear-gradient(90deg, rgba(24,55,45,.78), rgba(24,55,45,.18)),
+        radial-gradient(circle at 72% 34%, rgba(191,111,63,.16), transparent 18rem),
+        url('assets/img/fern-growth.jpg');
+    }
+    .team-tab.active, .team-tab:hover { border-color: rgba(201,120,70,.86); background: rgba(251,241,223,.18); }
+    .giving-list div { background: rgba(251,241,223,.12); border-color: rgba(251,241,223,.18); }
+    input { box-shadow: inset 0 1px 0 rgba(255,255,255,.45); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-media, .story-image { transform: none !important; }
+    }
+
+    @media (max-width: 980px) {
+      .nav { grid-template-columns: 1fr auto; border-radius: 26px; }
+      .nav-links { display: none; }
+      .brand-lockup img { width: 46px; height: 46px; }
+      .hero-inner, .model-grid, .section-head, .team-stage, .donate-card, .signup-card, .footer-grid { grid-template-columns: 1fr; }
+      .hero-proof { justify-self: start; }
+      .path-grid { grid-template-columns: 1fr 1fr; }
+      .photo-grid { grid-template-columns: repeat(6, 1fr); }
+      .photo-grid figure { grid-column: span 2 !important; }
+      .program-row { grid-template-columns: 1fr; gap: 12px; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .model-visual { position: relative; top: auto; width: min(100%, 420px); }
+    }
+    @media (max-width: 640px) {
+      .page-note { display: none; }
+      .nav { top: 10px; width: calc(100vw - 20px); padding: 10px; }
+      .nav-cta { min-height: 40px; padding: 0 14px; font-size: 11px; }
+      .brand-name strong { font-size: 15px; }
+      h1 { font-size: 62px; }
+      .hero-inner { padding-top: 150px; }
+      .ripple-model { padding-top: 96px; }
+      .model-grid { gap: 34px; }
+      .model-visual {
+        aspect-ratio: 1 / 1;
+        width: 100vw;
+        max-width: none;
+        margin: 28px calc(50% - 50vw) 20px;
+        border-radius: 0;
+        scroll-margin-top: 170px;
+      }
+      .model-visual::after { inset: 20px; border-radius: 28px; }
+      .path-grid, .impact-grid, .team-picker { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 210px; }
+      .photo-grid figure { grid-column: span 1 !important; }
+      .signup-row { grid-template-columns: 1fr; }
+      .footer-bottom { display: grid; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="page-note">Website design exploration - existing structure preserved</div>
 
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-main">Body Bend Yoga</span>
-        <span class="nav-logo-sub">Community Foundation</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
-      </ul>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand-lockup" href="#hero">
+      <img src="assets/bbycf-ripple-seed-mark.png" alt="BBYCF Ripple Seed mark" />
+      <span class="brand-name"><strong>Body Bend Yoga</strong><span>COMMUNITY FOUNDATION</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#impact">Impact</a>
+      <a href="#donate">Donate</a>
+      <a href="#contact">Contact</a>
     </div>
+    <a class="nav-cta" href="#partner">Partner With Us</a>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="fade-up">
-        <span class="label">Body Bend Yoga Community Foundation</span>
-        <h1>Every Teacher<br /><span>Was Once</span><br />a Student</h1>
-        <p class="hero-mission">We fund the next generation of wellness educators — providing scholarships so teachers can keep learning, keep growing, and keep leading.</p>
-        <div class="hero-actions">
-          <a href="#scholarship" class="btn btn-rose">Apply for a Scholarship</a>
-          <a href="https://givebutter.com/body-bend-yoga-community-foundation-rwigjq" class="btn btn-outline-cream" target="_blank" rel="noopener">Support a Teacher</a>
+  <header class="hero" id="hero">
+    <div class="hero-media" data-parallax=".18" aria-label="Community film montage">
+      <img src="assets/img/hero-hands.jpg" alt="Community hands gathered together" loading="eager" decoding="async" />
+      <img src="assets/img/community.jpg" alt="Women gathered in community" loading="eager" decoding="async" />
+      <img src="assets/img/outdoor-yoga.jpg" alt="Yoga teacher leading an outdoor class" loading="eager" decoding="async" />
+      <img src="assets/img/hands-light.jpg" alt="Hands holding light" loading="eager" decoding="async" />
+    </div>
+    <div class="hero-ripple" data-parallax="-.08"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="kicker reveal">Body Bend Yoga Community Foundation</div>
+        <h1 class="reveal" data-delay="1">Every teacher was once a student.</h1>
+        <p class="reveal" data-delay="2">We fund the next generation of wellness educators, helping teachers keep learning, keep growing, and keep leading healing practices in their communities.</p>
+        <div class="hero-actions reveal" data-delay="3">
+          <a class="btn" href="#scholarship">Apply for a Scholarship</a>
+          <a class="btn secondary" href="#donate">Support a Teacher</a>
+        </div>
+      </div>
+      <aside class="hero-proof reveal" data-delay="2" aria-label="Brand model summary">
+        <div class="line"><strong>Seed</strong><span>Potential placed with care.</span></div>
+        <div class="line"><strong>Ripple</strong><span>One teacher's growth reaches many people.</span></div>
+        <div class="line"><strong>Circle</strong><span>Donors, teachers, studios, and communities support each other.</span></div>
+      </aside>
+    </div>
+  </header>
+
+  <div class="ticker" aria-label="Support ribbon">
+    <div class="ticker-track">
+      <span>Support a teacher</span><span>Fund a scholarship</span><span>Ripple healing outward</span><span>Build the next generation of wellness educators</span>
+      <span>Support a teacher</span><span>Fund a scholarship</span><span>Ripple healing outward</span><span>Build the next generation of wellness educators</span>
+    </div>
+  </div>
+
+  <section class="mission" aria-label="Mission">
+    <div class="rings" data-ripple></div>
+    <div class="wrap">
+      <div class="eyebrow reveal">Our Mission</div>
+      <div class="mission-quote reveal" data-delay="1">“By investing in the growth of wellness educators, we strengthen the communities they serve.”</div>
+      <p class="mission-copy reveal" data-delay="2">Body Bend Yoga Community Foundation helps wellness educators continue their training so they can bring yoga, meditation, breathwork, sound healing, reiki, herbalism, and community care to more people.</p>
+    </div>
+  </section>
+
+  <section class="living-gallery" aria-label="Community photo grid">
+    <div class="wrap gallery-intro">
+      <div class="eyebrow reveal">Community in motion</div>
+      <h2 class="reveal" data-delay="1">Healing grows in community.</h2>
+      <p class="reveal" data-delay="2">Through gatherings, workshops, board leadership, and teacher-led practice, BBYCF creates spaces where people can connect, learn, and support the next generation of wellness educators.</p>
+    </div>
+    <div class="photo-grid reveal" data-delay="2">
+      <figure><img src="assets/img/community.jpg" loading="eager" decoding="async" alt="Women in community" /><figcaption>Community</figcaption></figure>
+      <figure><img src="assets/img/ripple-water.jpg" loading="eager" decoding="async" alt="Water spiral" /><figcaption>Ripple</figcaption></figure>
+      <figure><img src="assets/img/hands-light.jpg" alt="Hands holding light" loading="eager" decoding="async" /><figcaption>Care</figcaption></figure>
+      <figure><img src="assets/img/outdoor-yoga.jpg" alt="Yoga teacher leading an outdoor class" loading="eager" decoding="async" /><figcaption>Practice</figcaption></figure>
+      <figure><img src="assets/img/fern-growth.jpg" loading="eager" decoding="async" alt="Koru fern spiral" /><figcaption>Growth</figcaption></figure>
+      <figure><img src="assets/img/gallery-movement-circle.png" loading="eager" decoding="async" alt="Wellness class moving in warm light" /><figcaption>Movement</figcaption></figure>
+      <figure><img src="assets/img/gallery-ripple-circle.png" loading="eager" decoding="async" alt="Community circle connected through a shared braid" /><figcaption>Circle</figcaption></figure>
+      <figure><img src="assets/img/gallery-water-care.png" loading="eager" decoding="async" alt="Hands holding water" /><figcaption>Water</figcaption></figure>
+      <figure><img src="assets/img/gallery-hands-support.png" loading="eager" decoding="async" alt="Hands reaching toward each other" /><figcaption>Support</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="ripple-model" id="impact" aria-label="Ripple model">
+    <div class="wrap model-grid">
+      <div class="model-visual reveal" aria-hidden="true">
+        <img class="ripple-poster" src="assets/video/ripple-scroll-poster.jpg" alt="" loading="eager" decoding="async" />
+        <video class="ripple-video" data-ripple-video src="assets/video/ripple-scroll-scrub.mp4" poster="assets/video/ripple-scroll-poster.jpg" muted playsinline preload="auto"></video>
+        <div class="ring" style="--size: 440px; --scale: 1.0; --opacity:.32"></div>
+      </div>
+      <div>
+        <div class="eyebrow reveal">The Ripple Model</div>
+        <div class="section-head" style="display:block;margin-bottom:30px;">
+          <h2 class="reveal" data-delay="1">One scholarship can ripple through an entire community.</h2>
+          <p class="reveal" data-delay="2">A gift to BBYCF helps remove the financial barrier between a teacher and the training that deepens their practice, then carries that healing into studios, events, and communities.</p>
+        </div>
+        <div class="model-steps">
+          <article class="step-card reveal"><span>01 Support</span><h3>You support a teacher.</h3><p>Donations help fund scholarships and continued education for yoga, meditation, breathwork, sound healing, reiki, herbalism, and other wellness educators.</p></article>
+          <article class="step-card reveal" data-delay="1"><span>02 Training</span><h3>A teacher keeps learning.</h3><p>Scholarship support helps educators pursue training, certifications, and mentorship that may otherwise be out of reach.</p></article>
+          <article class="step-card reveal" data-delay="2"><span>03 Community</span><h3>Healing moves outward.</h3><p>Supported teachers bring their skills into classes, workshops, studios, and community spaces where more people can access care.</p></article>
         </div>
       </div>
     </div>
-    <div class="hero-wave">
-      <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,35 C240,70 480,0 720,35 C960,70 1200,0 1440,35 L1440,70 L0,70 Z" fill="#EAD9C0"/>
-      </svg>
+  </section>
+
+  <section class="pathways" aria-label="Audience pathways">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow reveal">Find Your Place in the Ripple</div>
+        <div>
+          <h2 class="reveal" data-delay="1">Find your place in the ripple.</h2>
+          <p class="reveal" data-delay="2">Whether you want to donate, apply for support, host a gathering, attend an event, or learn more about the mission, BBYCF offers a clear next step.</p>
+        </div>
+      </div>
+      <div class="path-grid">
+        <a class="path-card reveal" href="#donate"><div><span class="num">01</span><h3>Support a teacher</h3><p>For individual donors and founding-circle supporters.</p></div><span>Donate</span></a>
+        <a class="path-card reveal" data-delay="1" href="#scholarship"><div><span class="num">02</span><h3>Apply for support</h3><p>For wellness educators seeking continued training.</p></div><span>Apply</span></a>
+        <a class="path-card reveal" data-delay="2" href="#partner"><div><span class="num">03</span><h3>Host a circle</h3><p>For studios and teachers who want to create local scholarship cycles.</p></div><span>Partner</span></a>
+        <a class="path-card reveal" data-delay="3" href="#programs"><div><span class="num">04</span><h3>Attend an event</h3><p>For community members entering the work through gatherings.</p></div><span>Events</span></a>
+        <a class="path-card reveal" data-delay="3" href="#about"><div><span class="num">05</span><h3>Learn the story</h3><p>For supporters who want to understand the mission, leadership, and community vision.</p></div><span>About</span></a>
+      </div>
     </div>
   </section>
 
-  <!-- MISSION BLOCK -->
-  <section class="mission-block">
-    <div class="mission-block-inner">
-      <span class="label fade-up" style="text-align:center;">Our Mission</span>
-      <p class="mission-text fade-up">"By investing in the growth of wellness educators, we strengthen the communities they serve, helping more people access tools for self-regulation, healing, and holistic wellbeing."</p>
-      <div class="divider center fade-up"></div>
-      <p class="mission-sub fade-up">We believe in the continuous cycle of learning — like the earth and its seasons, wisdom is grown, shared, and passed forward. Student. Teacher. Leader. Mentor. Student again.</p>
+  <section class="programs" id="programs" aria-label="Programs and services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow reveal">What We Do</div>
+        <div>
+          <h2 class="reveal" data-delay="1">Programs that support the next generation of healers.</h2>
+          <p class="reveal" data-delay="2">BBYCF supports teacher training scholarships, community wellness workshops, studio partnerships, and corporate wellness programs that make healing education more accessible.</p>
+        </div>
+      </div>
+      <div class="program-list">
+        <a class="program-row reveal" href="#scholarship"><span class="index">01</span><h3>Teacher Training Scholarships</h3><p>Funding for yoga, breathwork, meditation, sound healing, reiki, herbalism, and related practices.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#events"><span class="index">02</span><h3>Community Wellness Workshops</h3><p>Accessible gatherings that create practice, connection, and local proof.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#partner"><span class="index">03</span><h3>Studio Partner Network</h3><p>Studios can host events, amplify scholarship cycles, and bring the model to life.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#partner"><span class="index">04</span><h3>Corporate Wellness Programs</h3><p>Program partners can fund training, accessible events, and community care.</p><span class="arrow">→</span></a>
+      </div>
     </div>
   </section>
 
-  <!-- IMPACT NUMBERS -->
-  <section class="impact" id="impact">
-    <div class="impact-inner">
-      <div style="text-align:center;">
-        <span class="label fade-up">Our Impact</span>
-        <h2 class="fade-up">Healing Is Growing</h2>
-        <div class="divider center fade-up"></div>
+  <section class="story-band" id="events" aria-label="Community story band">
+    <div class="story-image" data-parallax=".12"></div>
+    <div class="wrap">
+      <div class="eyebrow reveal">Our Community</div>
+      <h2 class="reveal" data-delay="1">Where healing becomes a collective practice.</h2>
+      <p class="reveal" data-delay="2">Community gatherings create space for practice, connection, and shared care. Each class, workshop, and partner event helps the foundation's impact move outward.</p>
+      <a class="btn reveal" data-delay="3" href="#partner">Join the Movement</a>
+    </div>
+  </section>
+
+  <section class="impact" aria-label="Impact metrics">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow reveal">Our Impact</div>
+        <div>
+          <h2 class="reveal" data-delay="1">Growing support for wellness educators.</h2>
+          <p class="reveal" data-delay="2">As the foundation grows, BBYCF will share funding goals, scholarship outcomes, partner activity, and community events so supporters can see what their gifts make possible.</p>
+        </div>
       </div>
       <div class="impact-grid">
-        <div class="impact-item fade-up">
-          <div class="impact-number">10</div>
-          <div class="impact-label">Scholarships awarded</div>
-        </div>
-        <div class="impact-item fade-up">
-          <div class="impact-number">5</div>
-          <div class="impact-label">Schools/studios in our network</div>
-        </div>
-        <div class="impact-item fade-up">
-          <div class="impact-number">6+</div>
-          <div class="impact-label">Wellness disciplines supported including yoga, sound healing, breathwork and reiki</div>
-        </div>
+        <div class="metric reveal"><strong>10</strong><span>Scholarships awarded or initial funding goal</span></div>
+        <div class="metric reveal" data-delay="1"><strong>5</strong><span>Schools and studios in the network</span></div>
+        <div class="metric reveal" data-delay="2"><strong>6+</strong><span>Wellness disciplines supported</span></div>
+        <div class="metric reveal" data-delay="3"><strong>1</strong><span>Clear ripple model for every visitor</span></div>
       </div>
     </div>
   </section>
 
-  <!-- STORIES -->
-  <section class="stories">
-    <div class="stories-inner">
-      <span class="label fade-up">Teacher Stories</span>
-      <h2 class="fade-up">The Cycle in Motion</h2>
-      <div class="divider fade-up"></div>
-      <div class="stories-grid">
-        <div class="story-card fade-up">
-          <img class="story-card-image" src="images/IMG_1209.jpeg" alt="Women in community" />
-          <div class="story-card-body">
-            <p class="story-quote">"Being part of this community reminded me why I started teaching. We rise together."</p>
-            <div class="story-name">BBYCF Community Member</div>
-            <div class="story-detail">Sound Healing Practitioner &middot; Orange County, CA</div>
-          </div>
-        </div>
-        <div class="story-card fade-up">
-          <img class="story-card-image" src="images/IMG_1210.jpeg" alt="Water spiral" />
-          <div class="story-card-body">
-            <p class="story-quote">"This scholarship gave me the freedom to deepen my practice without financial fear. I am a better teacher because of it."</p>
-            <div class="story-name">Scholarship Recipient</div>
-            <div class="story-detail">Yoga &amp; Breathwork Teacher &middot; Los Angeles, CA</div>
-          </div>
-        </div>
-        <div class="story-card fade-up">
-          <img class="story-card-image" src="images/IMG_1211.jpeg" alt="Hands holding light" />
-          <div class="story-card-body">
-            <p class="story-quote">"This community of teachers has changed how I practice and how I teach. I have experienced so much growth, support and inspiration, truly grateful for BBYCF and their commitment to teachers."</p>
-            <div class="story-name">BBYCF Community Member</div>
-            <div class="story-detail">BBYCF Community Gathering</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="about-image fade-up">
-        <img src="images/1a1823e907ee302799cded344b398d7f.jpg" alt="Yoga teacher leading an outdoor class" />
-        <div class="about-image-tag">"Equipping healers to heal."</div>
-      </div>
-      <div class="about-text">
-        <span class="label fade-up">Our Foundation</span>
-        <h2 class="fade-up">We Invest<br />in the Healers</h2>
-        <div class="divider fade-up"></div>
-        <p class="fade-up">The wellness industry is one of the fastest-growing sectors in America, yet the teachers who lead it are among the least financially supported. Training costs are high. Class pay is low. The math does not work.</p>
-        <p class="fade-up">Body Bend Yoga Community Foundation exists to close that gap, we provide scholarships to yoga, meditation, sound healing, breathwork, herbalism, and reiki practitioners so they can deepen their knowledge and serve their communities from a place of stability and confidence.</p>
-        <p class="fade-up">When a teacher grows, an entire community heals.</p>
-        <br />
-        <a href="about.html" class="btn btn-outline-plum fade-up">Read Our Story</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROGRAMS -->
-  <section class="programs" id="programs">
-    <div class="programs-inner">
-      <div class="programs-header">
+  <section class="leadership" id="about" aria-label="Leadership and board">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow reveal">Leadership</div>
         <div>
-          <span class="label fade-up">What We Do</span>
-          <h2 class="fade-up">Programs &amp; Services</h2>
-          <div class="divider fade-up"></div>
-        </div>
-        <p class="fade-up">From scholarships to community events, every program is designed to expand access and empower practitioners at every level of their journey.</p>
-      </div>
-      <div class="programs-grid">
-        <div class="program-card fade-up">
-          <div class="program-number">01</div>
-          <h3>Teacher Training Scholarships</h3>
-          <p>Funding continuing education for wellness educators covering yoga, sound healing, meditation, breathwork, and more.</p>
-        </div>
-        <div class="program-card fade-up">
-          <div class="program-number">02</div>
-          <h3>Community Wellness Workshops</h3>
-          <p>Low-cost and donation-based wellness events open to all, with proceeds reinvested directly into programs and scholarships.</p>
-        </div>
-        <div class="program-card fade-up">
-          <div class="program-number">03</div>
-          <h3>Corporate Wellness Programs</h3>
-          <p>Tailored wellness sessions for organizations and their teams. Every partnership directly funds community access.</p>
-        </div>
-        <div class="program-card fade-up">
-          <div class="program-number">04</div>
-          <h3>Accessible Yoga Services</h3>
-          <p>Private, adaptive yoga sessions for individuals with disabilities, ensuring wellness is available to every body.</p>
-        </div>
-        <div class="program-card fade-up">
-          <div class="program-number">05</div>
-          <h3>Wellness Research</h3>
-          <p>Partnering with graduate researchers to study the long-term effects of yoga and mindfulness on community health.</p>
-        </div>
-        <div class="program-card fade-up">
-          <div class="program-number">06</div>
-          <h3>National Expansion Network</h3>
-          <p>Building a national network of scholarship alumni who host workshops and retreats in their own communities.</p>
+          <h2 class="reveal" data-delay="1">The people holding the circle.</h2>
+          <p class="reveal" data-delay="2">Meet the board members helping guide BBYCF's scholarship, wellness education, and community partnership work.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- COMMUNITY FULL BLEED -->
-  <section class="community">
-    <div class="community-bg">
-      <img src="images/IMG_1212.jpeg" alt="Koru fern spiral" />
-    </div>
-    <div class="community-overlay"></div>
-    <div class="community-content">
-      <span class="label fade-up">Our Community</span>
-      <h2 class="fade-up">Where Healing Becomes<br />a Collective Practice</h2>
-      <div class="divider fade-up"></div>
-      <p class="fade-up">From workshops in Southern California to retreats and wellness events, we show up together. Every event is an opportunity to build connection and remind our community that healing is not a luxury — it is a right.</p>
-      <a href="partner.html" class="btn btn-rose fade-up" style="margin-top:1rem;">Join the Movement</a>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP -->
-  <section class="leadership" id="team">
-    <div class="leadership-inner">
-      <div class="leadership-photo fade-up">
-        <img src="images/Drew%20Muse%20Headshots.JPG" alt="Drew Muse, President of BBYCF" />
-        <div class="leadership-photo-tag"><span>Founder &amp; President</span></div>
-      </div>
-      <div class="leadership-text">
-        <span class="label fade-up">Leadership</span>
-        <h2 class="leader-name fade-up">Drew Muse</h2>
-        <span class="leader-title fade-up">President (CEO)</span>
-        <div class="divider fade-up"></div>
-        <p class="fade-up">Drew Muse is a wellness educator and community builder whose vision drives Body Bend Yoga Community Foundation. Having experienced firsthand the financial barriers that prevent teachers from deepening their practice, Drew created BBYCF to ensure that no educator has to choose between growth and stability.</p>
-        <p class="fade-up">Under Drew's leadership, the foundation is building a nationwide network of empowered wellness practitioners equipped to serve their communities with knowledge, confidence, and care.</p>
-        <div class="board-list fade-up">
-          <span class="board-list-label">Board of Directors</span>
-          <div class="board-members">
-            <div class="board-member-card">
-              <div class="board-member-photo">
-                <img src="images/board member Tanya Pereira.jpg" alt="Tanya Pereira" />
-              </div>
-              <div class="board-member-info">
-                <span class="board-member-name">Tanya Pereira</span>
-                <span class="board-member-role">Secretary &amp; Treasurer</span>
-              </div>
-            </div>
-            <div class="board-member-card">
-              <div class="board-member-photo">
-                <img src="images/Alicia Ester - Board Member.jpeg" alt="Alicia Ester" />
-              </div>
-              <div class="board-member-info">
-                <span class="board-member-name">Alicia Ester</span>
-                <span class="board-member-role">Board Member</span>
-              </div>
-            </div>
-            <div class="board-member-card">
-              <div class="board-member-photo">
-                <img src="images/Rebekah Rivera - Board Member.jpg" alt="Rebekah Rivera" />
-              </div>
-              <div class="board-member-info">
-                <span class="board-member-name">Rebekah Rivera</span>
-                <span class="board-member-role">Board Member</span>
-              </div>
-            </div>
+      <div class="team-stage reveal" data-team-stage>
+        <div class="team-portrait" aria-live="polite">
+          <img id="teamImage" src="assets/img/drew.jpg" alt="Drew Muse" />
+        </div>
+        <div class="team-copy">
+          <div class="eyebrow" id="teamEyebrow">Founder & President</div>
+          <h2 id="teamName">Drew Muse</h2>
+          <div class="team-role" id="teamRole">President (CEO)</div>
+          <p id="teamBio">Drew Muse began her yoga journey in 2010 to treat her scoliosis and reduce anxiety in school. Now a multi-certified yoga instructor and meditation guide, she hosts wellness events, classes, and teaches private sessions in Oakland and LA. She is also an instructor in various fitness apps and works as an ambassador for wellness brands, combining her love of wellness, community, and creativity all in one place.</p>
+          <a class="team-social" id="teamSocial" href="https://www.instagram.com/bodybendyoga/">@bodybendyoga</a>
+          <div class="team-picker" role="tablist" aria-label="Select team member">
+            <button class="team-tab active" type="button" data-member="drew" role="tab" aria-selected="true"><img src="assets/img/drew.jpg" loading="eager" decoding="async" alt="" /><span><strong>Drew Muse</strong><span>President</span></span></button>
+            <button class="team-tab" type="button" data-member="tanya" role="tab" aria-selected="false"><img src="assets/img/tanya.jpg" loading="eager" decoding="async" alt="" /><span><strong>Tanya Pereira</strong><span>Secretary & Treasurer</span></span></button>
+            <button class="team-tab" type="button" data-member="alicia" role="tab" aria-selected="false"><img src="assets/img/alicia.jpg" loading="eager" decoding="async" alt="" /><span><strong>Alicia Ester</strong><span>Board Member</span></span></button>
+            <button class="team-tab" type="button" data-member="rebekah" role="tab" aria-selected="false"><img src="assets/img/rebekah.jpg" loading="eager" decoding="async" alt="" /><span><strong>Rebekah Rivera</strong><span>Board Member</span></span></button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DONOR APPEAL -->
-  <section class="donor-appeal" id="donate">
-    <div class="donor-appeal-inner">
-      <span class="label fade-up">Give Today</span>
-      <h2 class="fade-up">Every Dollar Funds a Healer</h2>
-      <div class="divider fade-up"></div>
-      <p class="fade-up">Your contribution goes directly toward scholarships for wellness educators, free community classes, and expanding access to healing across Southern California and beyond.</p>
-      <div class="donor-amounts fade-up">
-        <div class="donor-amount">
-          <div class="donor-amount-price">$25</div>
-          <div class="donor-amount-impact">Covers a community class for someone who cannot afford it</div>
-        </div>
-        <div class="donor-amount">
-          <div class="donor-amount-price">$100</div>
-          <div class="donor-amount-impact">Contributes toward a teacher's continuing education course</div>
-        </div>
-        <div class="donor-amount">
-          <div class="donor-amount-price">$500</div>
-          <div class="donor-amount-impact">Funds a partial scholarship for a yoga teacher training</div>
-        </div>
-        <div class="donor-amount">
-          <div class="donor-amount-price">$1,000</div>
-          <div class="donor-amount-impact">Covers a full scholarship for a wellness educator</div>
-        </div>
+  <section class="donate-panel" id="donate" aria-label="Donate">
+    <div class="wrap donate-card reveal">
+      <div>
+        <div class="eyebrow">Give Today</div>
+        <h2>Every dollar funds a healer.</h2>
+        <p>Every contribution helps fund training, scholarships, community workshops, and the educators who carry healing practices into the places they serve.</p>
+        <div class="hero-actions"><a class="btn" href="https://givebutter.com/body-bend-yoga-community-foundation-rwigjq">Donate Now</a><a class="btn secondary" href="#impact">See Impact</a></div>
       </div>
-      <a href="https://givebutter.com/body-bend-yoga-community-foundation-rwigjq" class="btn btn-rose fade-up" target="_blank" rel="noopener">Donate Now</a>
-    </div>
-  </section>
-
-  <!-- PARTNER / SCHOLARSHIP CTA -->
-  <section class="partner-cta" id="scholarship">
-    <div class="partner-cta-inner">
-      <span class="label fade-up">Get Involved</span>
-      <h2 class="fade-up">Ready to Take<br />the Next Step?</h2>
-      <div class="divider center fade-up"></div>
-      <p class="fade-up">Whether you are a teacher seeking a scholarship, an organization looking to partner, or an individual who wants to give — there is a place for you in this community.</p>
-      <br />
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="fade-up">
-        <a href="contact.html" class="btn btn-rose">Apply for a Scholarship</a>
-        <a href="partner.html" class="btn btn-outline-plum">Partner With Us</a>
+      <div class="giving-list" aria-label="Example giving ladder">
+        <div><span>$25</span><span>Event materials</span></div>
+        <div><span>$100</span><span>Training fund</span></div>
+        <div><span>$250</span><span>Partial pathway</span></div>
+        <div><span>$1k+</span><span>Major award</span></div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-brand-name">Body Bend Yoga</div>
-          <div class="footer-brand-sub">Community Foundation</div>
-          <p>Empowering the next generation of wellness educators through scholarships, community, and the continuous cycle of learning.</p>
-          <form class="footer-email-signup" name="newsletter" netlify>
-            <input type="hidden" name="form-name" value="newsletter" />
-            <input class="footer-email-input" type="email" name="email" placeholder="Your email address" />
-            <button class="footer-email-btn" type="submit">Join</button>
-          </form>
-        </div>
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="#programs">Programs</a>
-          <a href="partner.html">Partner With Us</a>
-          <a href="donate.html">Donate</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <a href="https://www.instagram.com/bodybendyoga/" target="_blank" rel="noopener">Instagram</a>
-          <a href="mailto:hello@bbycf.org">hello@bbycf.org</a>
-          <a href="contact.html">Apply for a Scholarship</a>
-          <a href="partner.html#individual">Individual Giving</a>
-          <a href="partner.html#corporate">Corporate Giving</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2025 Body Bend Yoga Community Foundation. All rights reserved.</span>
-        <span>Southern California &middot; Serving Communities Nationwide</span>
-      </div>
+  <section class="final-cta" id="scholarship" aria-label="Final call to action">
+    <div class="wrap">
+      <div class="eyebrow reveal">Get Involved</div>
+      <h2 class="reveal" data-delay="1">Ready to take the next step?</h2>
+      <p class="reveal" data-delay="2">Whether you are a teacher seeking scholarship support, a studio ready to host, or a donor who believes healing education should be accessible, BBYCF is ready to welcome you into the circle.</p>
+      <div class="hero-actions reveal" data-delay="3" style="justify-content:center;"><a class="btn" href="#scholarship">Apply for a Scholarship</a><a class="btn secondary" href="#partner">Partner With Us</a></div>
     </div>
+  </section>
+
+  <section class="signup-section" id="signup" aria-label="Newsletter and text signup">
+    <div class="wrap signup-card reveal">
+      <div class="signup-copy">
+        <div class="eyebrow">Stay Connected</div>
+        <h2>Get scholarship, event, and community updates.</h2>
+        <p>Join the BBYCF circle for foundation news, teacher-training opportunities, community wellness gatherings, and ways to support the next wave of healers.</p>
+        <div class="signup-options" aria-label="Update types">
+          <span class="signup-pill">Scholarship cycles</span>
+          <span class="signup-pill">Community events</span>
+          <span class="signup-pill">Volunteer moments</span>
+          <span class="signup-pill">Text reminders</span>
+        </div>
+      </div>
+      <iframe name="googleFormSubmitFrame" id="googleFormSubmitFrame" title="Hidden Google Form submission frame" style="display:none;"></iframe>
+      <form class="signup-form" id="signupForm" action="https://docs.google.com/forms/d/e/1FAIpQLSe1YK37f0qrWBLwo37v17ckT3-PMZ0u7ax-htdsKzgpeqZWzw/formResponse" method="POST" target="googleFormSubmitFrame">
+        <div class="signup-row">
+          <div class="signup-field">
+            <label for="signupName">Name</label>
+            <input id="signupName" name="entry.1461207565" type="text" autocomplete="name" placeholder="Your name" required />
+          </div>
+          <div class="signup-field">
+            <label for="signupEmail">Email</label>
+            <input id="signupEmail" name="entry.258055506" type="email" autocomplete="email" placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="signup-field">
+          <label for="signupPhone">Mobile number</label>
+          <input id="signupPhone" name="entry.588949387" type="tel" autocomplete="tel" placeholder="Your phone number" required />
+        </div>
+        <fieldset class="signup-consent">
+          <legend>I'm interested in</legend>
+          <div class="signup-checks">
+            <label class="signup-check"><input type="checkbox" name="entry.900692046" value="Events (Classes, fundraisers, retreats)" checked /> Events</label>
+            <label class="signup-check"><input type="checkbox" name="entry.900692046" value="Scholarship Support (Support teachers)" /> Supporting teachers</label>
+            <label class="signup-check"><input type="checkbox" name="entry.900692046" value="Scholarships (You are a teacher)" /> Scholarships</label>
+          </div>
+        </fieldset>
+        <input id="signupSourceNote" name="entry.1855738125" type="hidden" value="Submitted from the branded BBYCF website signup section. Please follow up for any additional application or interest details." />
+        <p class="signup-note">By signing up, you agree to receive occasional BBYCF updates. Message and data rates may apply for texts. You can unsubscribe anytime.</p>
+        <button class="btn" type="submit">Join the List</button>
+        <p class="signup-status" id="signupStatus" aria-live="polite"></p>
+        <noscript><p class="signup-note">This branded form submits directly to BBYCF's Google Form. If submission does not work, use the full Google Form linked by the foundation.</p></noscript>
+      </form>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand-lockup" href="#hero"><img src="assets/bbycf-ripple-seed-mark.png" alt="BBYCF Ripple Seed mark" /><span class="brand-name"><strong>Body Bend Yoga</strong><span>COMMUNITY FOUNDATION</span></span></a>
+        <p>Empowering the next generation of wellness educators through scholarships, community, and the continuous cycle of learning.</p>
+      </div>
+      <div><h4>Learn</h4><a href="#about">Mission</a><a href="#about">Founder Story</a><a href="#impact">Impact</a><a href="#programs">Programs</a></div>
+      <div><h4>Take Action</h4><a href="#donate">Donate</a><a href="#scholarship">Apply</a><a href="#partner">Partner</a><a href="#events">Attend an Event</a></div>
+      <div><h4>Connect</h4><a href="mailto:hello@bbycf.org">hello@bbycf.org</a><a href="https://www.instagram.com/bodybendyoga/">Instagram</a><a href="#signup">Newsletter</a></div>
+    </div>
+    <div class="wrap footer-bottom"><span>© 2026 Body Bend Yoga Community Foundation</span><span>Southern California - Serving communities nationwide</span></div>
   </footer>
 
   <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    window.addEventListener('load', () => {
-      document.getElementById('hero').classList.add('loaded');
-    });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+    const nav = document.querySelector('.nav');
+    const revealEls = document.querySelectorAll('.reveal');
+    const parallaxEls = document.querySelectorAll('[data-parallax]');
+    const rings = document.querySelectorAll('.model-visual .ring');
+    const rippleVideo = document.querySelector('[data-ripple-video]');
+    const rippleVisual = document.querySelector('.model-visual');
+    let rippleVideoDuration = 0;
+    let targetRippleTime = 0;
+    let rippleScrubFrame = 0;
+    const teamMembers = {
+      drew: {
+        eyebrow: 'Founder & President',
+        name: 'Drew Muse',
+        role: 'President (CEO)',
+        image: 'assets/img/drew.jpg',
+        bio: 'Drew Muse began her yoga journey in 2010 to treat her scoliosis and reduce anxiety in school. Now a multi-certified yoga instructor and meditation guide, she hosts wellness events, classes, and teaches private sessions in Oakland and LA. She is also an instructor in various fitness apps and works as an ambassador for wellness brands, combining her love of wellness, community, and creativity all in one place.',
+        social: '@bodybendyoga',
+        socialUrl: 'https://www.instagram.com/bodybendyoga/'
+      },
+      tanya: {
+        eyebrow: 'Board of Directors',
+        name: 'Tanya Pereira',
+        role: 'Secretary & Treasurer',
+        image: 'assets/img/tanya.jpg',
+        bio: 'Tanya Pereira serves as Secretary and Treasurer for Body Bend Yoga Community Foundation, helping hold the operational, governance, and financial stewardship side of the circle. Her expanded approved bio can be added here once finalized.',
+        social: 'Board profile pending',
+        socialUrl: '#about'
+      },
+      alicia: {
+        eyebrow: 'Board of Directors',
+        name: 'Alicia Ester',
+        role: 'Board Member',
+        image: 'assets/img/alicia.jpg',
+        bio: 'Alicia Ester serves on the BBYCF Board of Directors, supporting the foundation as it grows its scholarship, wellness, and community access work. Her expanded approved bio can be added here once finalized.',
+        social: 'Board profile pending',
+        socialUrl: '#about'
+      },
+      rebekah: {
+        eyebrow: 'Board of Directors',
+        name: 'Rebekah Rivera',
+        role: 'Board Member',
+        image: 'assets/img/rebekah.jpg',
+        bio: 'Rebekah Rivera serves on the BBYCF Board of Directors, helping strengthen the community foundation and its support for wellness educators. Her expanded approved bio can be added here once finalized.',
+        social: 'Board profile pending',
+        socialUrl: '#about'
+      }
+    };
 
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(el => io.observe(el));
+
+    function scrubRippleVideo(progress) {
+      if (!rippleVideo || !rippleVideoDuration) return;
+      targetRippleTime = Math.min(rippleVideoDuration - .02, Math.max(0, progress * rippleVideoDuration));
+      if (rippleScrubFrame) return;
+      const step = () => {
+        const delta = targetRippleTime - rippleVideo.currentTime;
+        if (Math.abs(delta) > .018) {
+          try {
+            rippleVideo.currentTime += delta * .38;
+          } catch (error) {
+            // Some mobile browsers briefly reject seeks before the first frame is ready.
+          }
+          rippleScrubFrame = requestAnimationFrame(step);
+          return;
+        }
+        try {
+          rippleVideo.currentTime = targetRippleTime;
+        } catch (error) {}
+        rippleScrubFrame = 0;
+      };
+      rippleScrubFrame = requestAnimationFrame(step);
+    }
+
+    if (rippleVideo) {
+      rippleVideo.pause();
+      rippleVideo.addEventListener('loadedmetadata', () => {
+        rippleVideoDuration = Number.isFinite(rippleVideo.duration) ? rippleVideo.duration : 0;
+        updateMotion();
+      });
+      rippleVideo.addEventListener('loadeddata', () => {
+        rippleVisual?.classList.add('video-ready');
+      }, { once: true });
+      rippleVideo.addEventListener('canplay', () => {
+        rippleVideo.pause();
+        rippleVisual?.classList.add('video-ready');
+      }, { once: true });
+      rippleVideo.load();
+    }
+
+    function updateMotion() {
+      const y = window.scrollY || 0;
+      nav.classList.toggle('scrolled', y > 120);
+      parallaxEls.forEach(el => {
+        const speed = parseFloat(el.dataset.parallax || 0);
+        el.style.transform = `translate3d(0, ${y * speed}px, 0) scale(1.08)`;
+      });
+      const model = document.querySelector('.ripple-model');
+      if (model) {
+        const rect = model.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+        scrubRippleVideo(progress);
+        rings.forEach((ring, i) => {
+          ring.style.setProperty('--scale', 1 + progress * (.35 + i * .18));
+          ring.style.setProperty('--opacity', Math.max(.16, .74 - progress * (.18 + i * .08)));
+        });
+      }
+    }
+
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+      const status = document.getElementById('signupStatus');
+      const submitFrame = document.getElementById('googleFormSubmitFrame');
+      let pendingGoogleFormSubmission = false;
+
+      signupForm.addEventListener('submit', () => {
+        pendingGoogleFormSubmission = true;
+        if (status) {
+          status.textContent = 'Sending your information to BBYCF now...';
+        }
+      });
+
+      if (submitFrame) {
+        submitFrame.addEventListener('load', () => {
+          if (!pendingGoogleFormSubmission) return;
+          pendingGoogleFormSubmission = false;
+          signupForm.reset();
+          const defaultInterest = signupForm.querySelector('input[name="entry.900692046"]');
+          if (defaultInterest) defaultInterest.checked = true;
+          if (status) {
+            status.textContent = 'Thank you. Your information was sent to BBYCF.';
+          }
+        });
+      }
+    }
+
+    document.querySelectorAll('.team-tab').forEach(button => {
+      button.addEventListener('click', () => {
+        const member = teamMembers[button.dataset.member];
+        if (!member) return;
+        const portrait = document.querySelector('.team-portrait');
+        const image = document.getElementById('teamImage');
+        portrait.classList.add('switching');
+        document.querySelectorAll('.team-tab').forEach(tab => {
+          tab.classList.toggle('active', tab === button);
+          tab.setAttribute('aria-selected', tab === button ? 'true' : 'false');
+        });
+        setTimeout(() => {
+          image.src = member.image;
+          image.alt = member.name;
+          document.getElementById('teamEyebrow').textContent = member.eyebrow;
+          document.getElementById('teamName').textContent = member.name;
+          document.getElementById('teamRole').textContent = member.role;
+          document.getElementById('teamBio').textContent = member.bio;
+          const social = document.getElementById('teamSocial');
+          social.textContent = member.social;
+          social.href = member.socialUrl;
+          portrait.classList.remove('switching');
+        }, 180);
+      });
+    });
+
+    updateMotion();
+    window.addEventListener('scroll', updateMotion, { passive: true });
+  </script>
 </body>
 </html>
