@@ -306,6 +306,108 @@
     }
     .mission-copy { position: relative; z-index: 1; max-width: 750px; margin: 28px auto 0; text-align: center; color: rgba(29,33,29,.62); line-height: 1.7; font-size: 17px; }
 
+    .mission-clarity {
+      position: relative;
+      z-index: 1;
+      max-width: 1040px;
+      margin: 38px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .clarity-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31,73,57,.14);
+      background: rgba(255,250,239,.58);
+      text-align: left;
+      box-shadow: 0 14px 44px rgba(76,55,32,.06);
+    }
+    .clarity-card span {
+      display: block;
+      color: var(--clay);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .clarity-card strong {
+      display: block;
+      color: var(--forest-deep);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+    .clarity-card p { margin: 0; color: rgba(61,55,42,.70); line-height: 1.65; font-size: 14.5px; }
+    .ecosystem-cycle {
+      margin-top: 28px;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(49,88,68,.22);
+      background: rgba(255,247,234,.62);
+    }
+    .ecosystem-cycle h3 {
+      margin: 0 0 16px;
+      color: var(--forest);
+      font-size: 18px;
+      letter-spacing: .02em;
+      font-family: Inter, Avenir, Segoe UI, Arial, sans-serif;
+    }
+    .cycle-track {
+      display: grid;
+      grid-template-columns: 1.15fr auto 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .cycle-node {
+      min-height: 92px;
+      padding: 14px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.64);
+      border: 1px solid rgba(117,81,61,.16);
+      display: grid;
+      align-content: center;
+      gap: 5px;
+      text-align: center;
+    }
+    .cycle-node strong { color: var(--forest-deep); font-size: 15px; line-height: 1.15; }
+    .cycle-node span { color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .cycle-arrow { display: grid; place-items: center; color: var(--clay); font-weight: 900; }
+    .truth-line {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 30px auto 0;
+      text-align: center;
+      color: var(--forest-deep);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(24px, 2.5vw, 34px);
+      line-height: 1.28;
+      letter-spacing: -.035em;
+    }
+    .who-intro {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 34px;
+    }
+    .who-card, .who-list {
+      padding: clamp(24px, 3vw, 34px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(117,81,61,.16);
+      background: rgba(255,250,239,.70);
+      box-shadow: 0 14px 44px rgba(76,55,32,.06);
+    }
+    .who-card h3 { margin: 8px 0 12px; color: var(--forest); font-size: clamp(28px, 3vw, 38px); line-height: 1.08; }
+    .who-card p, .who-list li { color: var(--muted); line-height: 1.7; }
+    .who-card p { margin: 0; }
+    .who-list { margin: 0; padding-left: clamp(42px, 4vw, 54px); }
+    .who-list li { margin: 0 0 10px; }
+
     .ripple-model { background: var(--paper); overflow: hidden; }
     .model-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(36px, 7vw, 90px); align-items: center; }
     .model-visual {
@@ -906,6 +1008,9 @@
       .nav-links { display: none; }
       .brand-lockup img { width: 46px; height: 46px; }
       .hero-inner, .model-grid, .section-head, .team-stage, .donate-card, .signup-card, .footer-grid { grid-template-columns: 1fr; }
+      .mission-clarity, .who-intro { grid-template-columns: 1fr; }
+      .cycle-track { grid-template-columns: 1fr; }
+      .cycle-arrow { transform: rotate(90deg); min-height: 22px; }
       .hero-proof { justify-self: start; }
       .path-grid { grid-template-columns: 1fr 1fr; }
       .photo-grid { grid-template-columns: repeat(6, 1fr); }
@@ -970,16 +1075,16 @@
       <div>
         <div class="kicker reveal">Body Bend Yoga Community Foundation</div>
         <h1 class="reveal" data-delay="1">Every teacher was once a student.</h1>
-        <p class="reveal" data-delay="2">We fund the next generation of wellness educators, helping teachers keep learning, keep growing, and keep leading healing practices in their communities.</p>
+        <p class="reveal" data-delay="2">BBYCF invests in yoga teachers through scholarships for continuing education and professional development, building a partner network that helps teachers keep learning and better serve their communities.</p>
         <div class="hero-actions reveal" data-delay="3">
           <a class="btn" href="#scholarship">Apply for a Scholarship</a>
           <a class="btn secondary" href="#donate">Support a Teacher</a>
         </div>
       </div>
       <aside class="hero-proof reveal" data-delay="2" aria-label="Brand model summary">
-        <div class="line"><strong>Seed</strong><span>Potential placed with care.</span></div>
-        <div class="line"><strong>Ripple</strong><span>One teacher's growth reaches many people.</span></div>
-        <div class="line"><strong>Circle</strong><span>Donors, teachers, studios, and communities support each other.</span></div>
+        <div class="line"><strong>Scholarships</strong><span>Any active yoga teacher can apply for approved education support.</span></div>
+        <div class="line"><strong>Network</strong><span>Studios, brands, corporations, donors, and partners fund the cycle.</span></div>
+        <div class="line"><strong>Ripple</strong><span>Better educated teachers strengthen communities and the wellness industry.</span></div>
       </aside>
     </div>
   </header>
@@ -991,12 +1096,18 @@
     </div>
   </div>
 
-  <section class="mission" aria-label="Mission">
+  <section class="mission" id="mission" aria-label="Mission">
     <div class="rings" data-ripple></div>
     <div class="wrap">
       <div class="eyebrow reveal">Our Mission</div>
-      <div class="mission-quote reveal" data-delay="1">“By investing in the growth of wellness educators, we strengthen the communities they serve.”</div>
-      <p class="mission-copy reveal" data-delay="2">Body Bend Yoga Community Foundation helps wellness educators continue their training so they can bring yoga, meditation, breathwork, sound healing, reiki, herbalism, and community care to more people.</p>
+      <div class="mission-quote reveal" data-delay="1">“There is no wellness industry without the teachers who teach.”</div>
+      <p class="mission-copy reveal" data-delay="2">Body Bend Yoga Community Foundation invests in yoga teachers by providing scholarships for continuing education and professional development. Any active yoga teacher can apply for support toward teacher trainings, continuing education, advanced certifications, mentorships, and other approved educational opportunities.</p>
+      <div class="mission-clarity" aria-label="BBYCF mission clarity points">
+        <article class="clarity-card reveal"><span>For Teachers</span><strong>Scholarships remove the barrier.</strong><p>Active yoga teachers can request support for approved training, certifications, mentorships, and learning opportunities that deepen their practice.</p></article>
+        <article class="clarity-card reveal" data-delay="1"><span>For Partners</span><strong>A shared network funds the work.</strong><p>Studios donate space for fundraising events. Wellness brands sponsor and partner. Corporations hire teachers for wellness programs and make tax-deductible donations or sponsorships.</p></article>
+        <article class="clarity-card reveal" data-delay="2"><span>For Communities</span><strong>Teacher growth creates a ripple.</strong><p>Every financial gift, in-kind contribution, and partnership helps teachers keep learning so they can better serve the communities around them.</p></article>
+      </div>
+      <div class="truth-line reveal" data-delay="3">Nationwide network vision. California-based programs today.</div>
     </div>
   </section>
 
@@ -1029,13 +1140,27 @@
       <div>
         <div class="eyebrow reveal">The Ripple Model</div>
         <div class="section-head" style="display:block;margin-bottom:30px;">
-          <h2 class="reveal" data-delay="1">One scholarship can ripple through an entire community.</h2>
-          <p class="reveal" data-delay="2">A gift to BBYCF helps remove the financial barrier between a teacher and the training that deepens their practice, then carries that healing into studios, events, and communities.</p>
+          <h2 class="reveal" data-delay="1">The ecosystem is simple: support teachers, strengthen everyone.</h2>
+          <p class="reveal" data-delay="2">BBYCF gathers support from studios, wellness brands, corporations, donors, and community partners, then turns that support into scholarship funding for teacher education.</p>
+        </div>
+        <div class="ecosystem-cycle reveal" data-delay="2" aria-label="BBYCF ecosystem cycle">
+          <h3>How the ripple works</h3>
+          <div class="cycle-track">
+            <div class="cycle-node"><strong>Studios, Brands, Corporations, Donors</strong><span>Space, sponsorships, wellness programs, gifts</span></div>
+            <div class="cycle-arrow">→</div>
+            <div class="cycle-node"><strong>BBYCF</strong><span>Organizes the network and scholarship fund</span></div>
+            <div class="cycle-arrow">→</div>
+            <div class="cycle-node"><strong>Scholarships for Teachers</strong><span>Education, certifications, mentorships</span></div>
+            <div class="cycle-arrow">→</div>
+            <div class="cycle-node"><strong>Better Educated Teachers</strong><span>Deeper practice and stronger instruction</span></div>
+            <div class="cycle-arrow">→</div>
+            <div class="cycle-node"><strong>Stronger Communities and Industry</strong><span>More access, care, and wellness leadership</span></div>
+          </div>
         </div>
         <div class="model-steps">
-          <article class="step-card reveal"><span>01 Support</span><h3>You support a teacher.</h3><p>Donations help fund scholarships and continued education for yoga, meditation, breathwork, sound healing, reiki, herbalism, and other wellness educators.</p></article>
-          <article class="step-card reveal" data-delay="1"><span>02 Training</span><h3>A teacher keeps learning.</h3><p>Scholarship support helps educators pursue training, certifications, and mentorship that may otherwise be out of reach.</p></article>
-          <article class="step-card reveal" data-delay="2"><span>03 Community</span><h3>Healing moves outward.</h3><p>Supported teachers bring their skills into classes, workshops, studios, and community spaces where more people can access care.</p></article>
+          <article class="step-card reveal"><span>01 Invest</span><h3>Partners invest in teachers.</h3><p>Studios, wellness brands, corporations, donors, and community partners contribute through money, space, sponsorships, in-kind support, and programming.</p></article>
+          <article class="step-card reveal" data-delay="1"><span>02 Scholarship</span><h3>Teachers keep learning.</h3><p>Any active yoga teacher can apply for scholarship support toward approved teacher trainings, continuing education, advanced certifications, and mentorships.</p></article>
+          <article class="step-card reveal" data-delay="2"><span>03 Ripple</span><h3>Communities grow stronger.</h3><p>When teachers continue learning, they can better serve their communities, strengthening the wellness industry as a whole.</p></article>
         </div>
       </div>
     </div>
@@ -1047,7 +1172,7 @@
         <div class="eyebrow reveal">Find Your Place in the Ripple</div>
         <div>
           <h2 class="reveal" data-delay="1">Find your place in the ripple.</h2>
-          <p class="reveal" data-delay="2">Whether you want to donate, apply for support, host a gathering, attend an event, or learn more about the mission, BBYCF offers a clear next step.</p>
+          <p class="reveal" data-delay="2">If you are a teacher, donor, yoga studio, wellness brand, corporation, or community partner, BBYCF gives you a clear way to invest in teacher education.</p>
         </div>
       </div>
       <div class="path-grid">
@@ -1065,15 +1190,15 @@
       <div class="section-head">
         <div class="eyebrow reveal">What We Do</div>
         <div>
-          <h2 class="reveal" data-delay="1">Programs that support the next generation of healers.</h2>
-          <p class="reveal" data-delay="2">BBYCF supports teacher training scholarships, community wellness workshops, studio partnerships, and corporate wellness programs that make healing education more accessible.</p>
+          <h2 class="reveal" data-delay="1">Programs that invest in yoga teachers.</h2>
+          <p class="reveal" data-delay="2">Scholarships can support yoga teacher trainings, continuing education, advanced certifications, mentorships, and other approved learning opportunities. Partner events and wellness programs help fund that scholarship cycle.</p>
         </div>
       </div>
       <div class="program-list">
-        <a class="program-row reveal" href="#scholarship"><span class="index">01</span><h3>Teacher Training Scholarships</h3><p>Funding for yoga, breathwork, meditation, sound healing, reiki, herbalism, and related practices.</p><span class="arrow">→</span></a>
-        <a class="program-row reveal" href="#events"><span class="index">02</span><h3>Community Wellness Workshops</h3><p>Accessible gatherings that create practice, connection, and local proof.</p><span class="arrow">→</span></a>
-        <a class="program-row reveal" href="#partner"><span class="index">03</span><h3>Studio Partner Network</h3><p>Studios can host events, amplify scholarship cycles, and bring the model to life.</p><span class="arrow">→</span></a>
-        <a class="program-row reveal" href="#partner"><span class="index">04</span><h3>Corporate Wellness Programs</h3><p>Program partners can fund training, accessible events, and community care.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#scholarship"><span class="index">01</span><h3>Teacher Education Scholarships</h3><p>Support for active yoga teachers pursuing training, continuing education, certifications, mentorships, and approved professional development.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#events"><span class="index">02</span><h3>Fundraising Events</h3><p>Yoga studios donate space for classes, workshops, and gatherings that directly help fund scholarship support.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#partner"><span class="index">03</span><h3>Wellness Brand Partnerships</h3><p>Wellness brands support the mission through sponsorships, collaborations, in-kind support, and community partnerships.</p><span class="arrow">→</span></a>
+        <a class="program-row reveal" href="#partner"><span class="index">04</span><h3>Corporate Wellness Partnerships</h3><p>Corporations can hire teachers for wellness programming while supporting BBYCF through tax-deductible donations or sponsorships.</p><span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -1109,11 +1234,25 @@
   <section class="leadership" id="about" aria-label="Leadership and board">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow reveal">Leadership</div>
+        <div class="eyebrow reveal">Who We Are</div>
         <div>
-          <h2 class="reveal" data-delay="1">The people holding the circle.</h2>
-          <p class="reveal" data-delay="2">Meet the board members helping guide BBYCF's scholarship, wellness education, and community partnership work.</p>
+          <h2 class="reveal" data-delay="1">A foundation for the teachers behind wellness.</h2>
+          <p class="reveal" data-delay="2">BBYCF is building a nationwide network while currently serving communities through California-based programs. The work is focused on one clear belief: teacher education is community infrastructure.</p>
         </div>
+      </div>
+      <div class="who-intro reveal" data-delay="1">
+        <article class="who-card">
+          <div class="eyebrow">What BBYCF Does</div>
+          <h3>We turn community support into teacher scholarships.</h3>
+          <p>BBYCF connects donors, studios, wellness brands, corporations, and community partners so active yoga teachers can access the education and mentorship they need to keep growing.</p>
+        </article>
+        <ul class="who-list" aria-label="Who BBYCF serves and how partners help">
+          <li>Any active yoga teacher can apply for scholarship support.</li>
+          <li>Approved funds can support trainings, continuing education, certifications, mentorships, and related learning opportunities.</li>
+          <li>Studios help by donating space for fundraising events.</li>
+          <li>Wellness brands and corporations help through sponsorships, partnerships, corporate wellness programs, and tax-deductible support.</li>
+          <li>Every contribution helps teachers better serve their communities.</li>
+        </ul>
       </div>
       <div class="team-stage reveal" data-team-stage>
         <div class="team-portrait" aria-live="polite">
@@ -1140,8 +1279,8 @@
     <div class="wrap donate-card reveal">
       <div>
         <div class="eyebrow">Give Today</div>
-        <h2>Every dollar funds a healer.</h2>
-        <p>Every contribution helps fund training, scholarships, community workshops, and the educators who carry healing practices into the places they serve.</p>
+        <h2>Every contribution funds a teacher's next step.</h2>
+        <p>Financial gifts, donated space, sponsorships, in-kind support, and partnerships all help BBYCF fund scholarships for teachers who keep the wellness industry moving.</p>
         <div class="hero-actions"><a class="btn" href="https://givebutter.com/body-bend-yoga-community-foundation-rwigjq">Donate Now</a><a class="btn secondary" href="#impact">See Impact</a></div>
       </div>
       <div class="giving-list" aria-label="Example giving ladder">
@@ -1212,9 +1351,9 @@
     <div class="wrap footer-grid">
       <div>
         <a class="brand-lockup" href="#hero"><img src="assets/bbycf-ripple-seed-mark.png" alt="BBYCF Ripple Seed mark" /><span class="brand-name"><strong>Body Bend Yoga</strong><span>COMMUNITY FOUNDATION</span></span></a>
-        <p>Empowering the next generation of wellness educators through scholarships, community, and the continuous cycle of learning.</p>
+        <p>Investing in yoga teachers through scholarships, partnerships, and the continuous cycle of learning.</p>
       </div>
-      <div><h4>Learn</h4><a href="#about">Mission</a><a href="#about">Founder Story</a><a href="#impact">Impact</a><a href="#programs">Programs</a></div>
+      <div><h4>Learn</h4><a href="#mission">Mission</a><a href="#about">Founder Story</a><a href="#impact">Impact</a><a href="#programs">Programs</a></div>
       <div><h4>Take Action</h4><a href="#donate">Donate</a><a href="#scholarship">Apply</a><a href="#partner">Partner</a><a href="#events">Attend an Event</a></div>
       <div><h4>Connect</h4><a href="mailto:hello@bbycf.org">hello@bbycf.org</a><a href="https://www.instagram.com/bodybendyoga/">Instagram</a><a href="#signup">Newsletter</a></div>
     </div>
