@@ -807,6 +807,42 @@
     body > section .signup-copy { text-align: center; }
     body > section .program-row .arrow { justify-self: center; }
     body > section .who-list { text-align: left; }
+
+    /* Requested refinement: keep Our Community perfectly centered and keep What We Do left-aligned. */
+    .story-band .wrap {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+    }
+    .story-band .kicker,
+    .story-band h2,
+    .story-band p,
+    .story-band .btn {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .programs .wrap,
+    .programs .section-head,
+    .programs .section-head h2,
+    .programs .section-head p,
+    .programs .program-row,
+    .programs .program-row h3,
+    .programs .program-row p { text-align: left; }
+    .programs .section-head {
+      display: grid;
+      grid-template-columns: .34fr .66fr;
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .programs .section-head p,
+    .programs .program-row p {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .programs .program-row .arrow { justify-self: end; }
+
     .signup-section { padding-bottom: 112px; }
 
     .step-card { padding: 24px; }
