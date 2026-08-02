@@ -767,10 +767,52 @@
     .gallery-intro { max-width: 760px; margin-bottom: 42px; }
     .photo-grid { grid-auto-rows: clamp(132px, 14vw, 210px); }
     .ripple-model, .pathways, .programs, .impact, .leadership, .donate-panel, .final-cta { padding-top: 112px; padding-bottom: 112px; }
+
+    /* Stakeholder edit: center main-section subheadings and supporting copy below the hero/header. */
+    body > section .wrap { text-align: center; }
+    body > section h2,
+    body > section h3,
+    body > section p { text-align: center; }
+    body > section p { margin-left: auto; margin-right: auto; }
+    body > section .section-head {
+      display: block;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    body > section .section-head h2,
+    body > section .section-head p,
+    body > section .gallery-intro h2,
+    body > section .gallery-intro p,
+    body > section .story-band h2,
+    body > section .story-band p,
+    body > section .donate-card h2,
+    body > section .donate-card p,
+    body > section .signup-copy h2,
+    body > section .signup-copy p,
+    body > section .team-copy h2,
+    body > section .team-copy p,
+    body > section .step-card p,
+    body > section .path-card p,
+    body > section .program-row p { margin-left: auto; margin-right: auto; }
+    body > section .clarity-card,
+    body > section .who-card,
+    body > section .step-card,
+    body > section .path-card,
+    body > section .metric,
+    body > section .program-row,
+    body > section .team-copy,
+    body > section .donate-card,
+    body > section .signup-copy { text-align: center; }
+    body > section .program-row .arrow { justify-self: center; }
+    body > section .who-list { text-align: left; }
     .signup-section { padding-bottom: 112px; }
+
     .step-card { padding: 24px; }
     .step-card h3 { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.12; }
     .step-card p, .path-card p, .program-row p, .team-copy p { font-size: 15.5px; line-height: 1.7; }
+
     .path-card { min-height: 220px; padding: 20px; }
     .path-card h3 { font-size: 22px; line-height: 1.08; }
     .program-row { padding: 24px 0; }
