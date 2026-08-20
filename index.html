@@ -606,7 +606,7 @@
     }
     .team-copy h2 { margin: 12px 0 8px; font-size: clamp(52px, 7vw, 96px); line-height: .9; position: relative; }
     .team-role { color: var(--sage); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; font-weight: 900; margin-bottom: 26px; position: relative; }
-    .team-copy p { color: rgba(247,241,231,.76); line-height: 1.75; font-size: 17px; max-width: 680px; position: relative; }
+    .team-copy p { color: rgba(247,241,231,.76); line-height: 1.75; font-size: 17px; max-width: 680px; position: relative; white-space: pre-line; }
     .team-social { color: var(--cream); text-decoration: none; display: inline-flex; margin-top: 6px; border-bottom: 1px solid rgba(247,241,231,.44); position: relative; }
     .team-picker {
       display: grid;
@@ -1240,7 +1240,7 @@
           <div class="team-picker" role="tablist" aria-label="Select team member">
             <button class="team-tab active" type="button" data-member="drew" role="tab" aria-selected="true"><img src="assets/img/drew.jpg" loading="eager" decoding="async" alt="" /><span><strong>Drew Muse</strong><span>President</span></span></button>
             <button class="team-tab" type="button" data-member="tanya" role="tab" aria-selected="false"><img src="assets/img/tanya.jpg" loading="eager" decoding="async" alt="" /><span><strong>Tanya Pereira</strong><span>Secretary & Treasurer</span></span></button>
-            <button class="team-tab" type="button" data-member="alicia" role="tab" aria-selected="false"><img src="assets/img/alicia.jpg" loading="eager" decoding="async" alt="" /><span><strong>Alicia Ester</strong><span>Board Member</span></span></button>
+            <button class="team-tab" type="button" data-member="alicia" role="tab" aria-selected="false"><img src="assets/img/alicia.jpg" loading="eager" decoding="async" alt="" /><span><strong>Alicia “ACE” Easter</strong><span>Board Member</span></span></button>
             <button class="team-tab" type="button" data-member="rebekah" role="tab" aria-selected="false"><img src="assets/img/rebekah.jpg" loading="eager" decoding="async" alt="" /><span><strong>Rebekah Rivera</strong><span>Board Member</span></span></button>
             <button class="team-tab" type="button" data-member="derek" role="tab" aria-selected="false"><img src="assets/img/derek.jpg" loading="eager" decoding="async" alt="" /><span><strong>Derek Garlington</strong><span>Board Member</span></span></button>
           </div>
@@ -1353,16 +1353,22 @@
         name: 'Tanya Pereira',
         role: 'Secretary & Treasurer',
         image: 'assets/img/tanya.jpg',
-        bio: 'Tanya Pereira serves as Secretary and Treasurer for Body Bend Yoga Community Foundation, helping hold the operational, governance, and financial stewardship side of the circle. Her expanded approved bio can be added here once finalized.',
+        bio: `Tanya brings a chemical engineer's lens to the work of building community. In her career, she leads scale-up and commercialization strategy, translating complex technical systems into clear, executable plans, built on process optimization, cross-functional collaboration, and knowing how to take something promising and figure out how to make it work at scale.
+
+As Secretary & Treasurer for BBYCF, Tanya oversees the Foundation's financial stewardship and governance, ensuring that BBYCF's growth is as intentional and well-built as the communities it serves.`,
         social: 'Board profile pending',
         socialUrl: '#about'
       },
       alicia: {
         eyebrow: 'Board of Directors',
-        name: 'Alicia Ester',
+        name: 'Alicia “ACE” Easter',
         role: 'Board Member',
         image: 'assets/img/alicia.jpg',
-        bio: 'Alicia Ester serves on the BBYCF Board of Directors, supporting the foundation as it grows its scholarship, wellness, and community access work. Her expanded approved bio can be added here once finalized.',
+        bio: `ACE is a wellness practitioner, keynote speaker, and retreat leader who has spent more than a decade guiding individuals, schools, corporations, and communities toward greater well-being through yoga, meditation, breathwork, sound healing, and mindfulness. She is the founder of ACE Enterprises LLC and ACE Yoga LA, and the creator of Peace in the Pause, ACE Yoga for Kids, and Stay Brave Retreats.
+
+After earning her degree in Business Administration from Auburn University and spending fifteen years in corporate marketing and commercial real estate, ACE found her life's work through the healing power of yoga while grieving the loss of her mother, and has built her career on creating space for others to reconnect with themselves. She partners with organizations, schools, and brands to bring wellness into the workplace and community, and hosts the JOY FOR LIFE Podcast, exploring conversations on joy, healing, and purpose.
+
+As a board member, ACE brings her guiding belief that peace isn't the destination but the practice to BBYCF's mission of creating brave, joyful spaces for healing and connection.`,
         social: 'Board profile pending',
         socialUrl: '#about'
       },
@@ -1371,7 +1377,11 @@
         name: 'Rebekah Rivera',
         role: 'Board Member',
         image: 'assets/img/rebekah.jpg',
-        bio: 'Rebekah Rivera serves on the BBYCF Board of Directors, helping strengthen the community foundation and its support for wellness educators. Her expanded approved bio can be added here once finalized.',
+        bio: `Rebekah is a devoted lifelong student of yoga, philosophy, mythology, and the subtle art of being human. Often called a "teacher's teacher," she's known for her gentle, insightful guidance, helping others move beyond theory and into the lived, embodied wisdom of their own experience.
+
+Her inclusive, holistic teachings weave timeless wisdom with insights from psychology, cross-cultural mythology, and physiology, making complex ideas accessible and deeply relevant to everyday life. Whether leading a workshop or a quiet conversation, she creates spaces where authenticity is honored, imperfection is welcome, and true transformation unfolds gently and organically.
+
+As a board member, Rebekah brings her warmth, humor, and unwavering presence to BBYCF's mission, inspiring the community to walk its path with clarity, courage, and compassion.`,
         social: 'Board profile pending',
         socialUrl: '#about'
       },
@@ -1380,7 +1390,11 @@
         name: 'Derek Garlington',
         role: 'Board Member',
         image: 'assets/img/derek.jpg',
-        bio: 'Derek Garlington serves on the BBYCF Board of Directors, supporting the foundation as it grows its scholarship, wellness, and community access work. His expanded approved bio can be added here once finalized.',
+        bio: `Derek is a multidisciplinary artist and healer through the modalities of movement, sound, and storytelling. As a 2x MMA Champion and yoga instructor, he's blended the two forms into his own FlowFighting practice, Martial Asana, and conducts sound baths and meditations that calm and cleanse through vibration and affirmation.
+
+His written work has been published as a novel and produced as a short film, Kindred Souls, and he holds a master's in Screenwriting from the University of Southern California. Behind the camera, he's covered over a hundred events, and he built the collaborative storytelling card game Pitch It to Me to bring others into the creative process.
+
+As a wellness guide, Derek has alchemized his talents in a variety of ways to enrich our presence with the human experience, and he brings that same spirit to BBYCF's mission of building space for rest, connection, and restoration.`,
         social: 'Board profile pending',
         socialUrl: '#about'
       }
