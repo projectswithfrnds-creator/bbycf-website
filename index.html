@@ -1356,8 +1356,8 @@
         bio: `Tanya brings a chemical engineer's lens to the work of building community. In her career, she leads scale-up and commercialization strategy, translating complex technical systems into clear, executable plans, built on process optimization, cross-functional collaboration, and knowing how to take something promising and figure out how to make it work at scale.
 
 As Secretary & Treasurer for BBYCF, Tanya oversees the Foundation's financial stewardship and governance, ensuring that BBYCF's growth is as intentional and well-built as the communities it serves.`,
-        social: 'Board profile pending',
-        socialUrl: '#about'
+        social: '',
+        socialUrl: ''
       },
       alicia: {
         eyebrow: 'Board of Directors',
@@ -1369,8 +1369,8 @@ As Secretary & Treasurer for BBYCF, Tanya oversees the Foundation's financial st
 After earning her degree in Business Administration from Auburn University and spending fifteen years in corporate marketing and commercial real estate, ACE found her life's work through the healing power of yoga while grieving the loss of her mother, and has built her career on creating space for others to reconnect with themselves. She partners with organizations, schools, and brands to bring wellness into the workplace and community, and hosts the JOY FOR LIFE Podcast, exploring conversations on joy, healing, and purpose.
 
 As a board member, ACE brings her guiding belief that peace isn't the destination but the practice to BBYCF's mission of creating brave, joyful spaces for healing and connection.`,
-        social: 'Board profile pending',
-        socialUrl: '#about'
+        social: '',
+        socialUrl: ''
       },
       rebekah: {
         eyebrow: 'Board of Directors',
@@ -1382,8 +1382,8 @@ As a board member, ACE brings her guiding belief that peace isn't the destinatio
 Her inclusive, holistic teachings weave timeless wisdom with insights from psychology, cross-cultural mythology, and physiology, making complex ideas accessible and deeply relevant to everyday life. Whether leading a workshop or a quiet conversation, she creates spaces where authenticity is honored, imperfection is welcome, and true transformation unfolds gently and organically.
 
 As a board member, Rebekah brings her warmth, humor, and unwavering presence to BBYCF's mission, inspiring the community to walk its path with clarity, courage, and compassion.`,
-        social: 'Board profile pending',
-        socialUrl: '#about'
+        social: '',
+        socialUrl: ''
       },
       derek: {
         eyebrow: 'Board of Directors',
@@ -1395,8 +1395,8 @@ As a board member, Rebekah brings her warmth, humor, and unwavering presence to 
 His written work has been published as a novel and produced as a short film, Kindred Souls, and he holds a master's in Screenwriting from the University of Southern California. Behind the camera, he's covered over a hundred events, and he built the collaborative storytelling card game Pitch It to Me to bring others into the creative process.
 
 As a wellness guide, Derek has alchemized his talents in a variety of ways to enrich our presence with the human experience, and he brings that same spirit to BBYCF's mission of building space for rest, connection, and restoration.`,
-        social: 'Board profile pending',
-        socialUrl: '#about'
+        social: '',
+        socialUrl: ''
       }
     };
 
@@ -1463,7 +1463,8 @@ As a wellness guide, Derek has alchemized his talents in a variety of ways to en
           document.getElementById('teamBio').textContent = member.bio;
           const social = document.getElementById('teamSocial');
           social.textContent = member.social;
-          social.href = member.socialUrl;
+          social.href = member.socialUrl || '#about';
+          social.hidden = !member.social;
           portrait.classList.remove('switching');
         }, 180);
       });
